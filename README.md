@@ -1,78 +1,89 @@
-# SaveKey / AtariVox Allocation List
+# SaveKey Allocation List
 
-A community-maintained list of **SaveKey** and **AtariVox** memory allocations used by Atari 2600 games and homebrew.
+Community-maintained SaveKey/AtariVox memory allocation registry for Atari 2600 and compatible projects.
 
-The goal of this repository is to provide a single, easy-to-maintain reference for developers using persistent storage, and to help avoid different games accidentally using the same memory locations.
+The goal is to provide one easy-to-review place where developers can reserve persistent-storage pages without accidentally colliding with another game.
 
-## Background
+> This is a community-maintained project under `atariage-community`. It is not an official AtariAge repository.
 
-The SaveKey is an aftermarket Atari 2600 device that plugs into joystick port 2 and provides non-volatile storage. AtariVox includes compatible storage functionality.
+## The canonical file
 
-Games can use this memory for things such as:
+**[`allocations.yaml`](allocations.yaml) is the source of truth.**
 
-- High scores
-- Game settings
-- Progress and unlocks
-- Other persistent game data
+[`ALLOCATIONS.md`](ALLOCATIONS.md) is generated from the YAML and provides a convenient table of allocated and currently unallocated ranges.
 
-Because the available memory is shared across games, developers need to coordinate which addresses or pages they use.
+The registry uses **64-byte pages**. The address range is derived from the page number, so contributors do not have to maintain both values manually:
 
-The original allocation list is maintained on AtariAge:
+- start address = `page × 64`
+- end address = `start address + 63`
+
+This avoids page/address mismatches.
+
+## Reserving space
+
+1. Check [`ALLOCATIONS.md`](ALLOCATIONS.md) and current open pull requests/issues for conflicts.
+2. Add your project to `allocations.yaml`.
+3. Set `status: reserved` for a new reservation, or `status: allocated` for an already established allocation.
+4. Run the validator.
+5. Regenerate `ALLOCATIONS.md`.
+6. Submit a pull request.
+
+Example:
+
+```yaml
+  - title: "My New Game"
+    developer: "Your Name"
+    kind: game
+    status: reserved
+    pages:
+      start: 0x104
+      end: 0x105
+    notes: "High scores and game settings"
+```
+
+If you are not comfortable creating a pull request, open an issue with the project name, developer, requested number of pages, and any preferred range. A maintainer can add it for you.
+
+## Fields
+
+Each allocation supports:
+
+- `title` — game/project name
+- `developer` — developer, author, team, or publisher credited by the source
+- `platform` — optional; defaults to Atari 2600
+- `kind` — `game`, `system`, `scratchpad`, or `utility`
+- `status` — `reserved`, `allocated`, or `retired`
+- `pages.start` / `pages.end` — inclusive hexadecimal page range
+- `notes` — optional additional information
+- `source_correction` — optional note documenting normalization/correction of source data
+
+Please keep the schema simple. If a new field seems useful, discuss it in an issue before adding it broadly.
+
+## Validate and generate
+
+Requires Python 3 and PyYAML:
+
+```sh
+python -m pip install -r requirements.txt
+python tools/validate.py allocations.yaml
+python tools/generate.py allocations.yaml ALLOCATIONS.md
+```
+
+The GitHub Actions workflow runs validation and checks that `ALLOCATIONS.md` has been regenerated.
+
+## Imported source
+
+The initial data was imported from:
 
 https://atariage.com/atarivox/atarivox_mem_list.html
 
-This repository is intended to make community contributions, corrections, and additions easier to track and review.
+The AtariAge page states that it was last updated **April 14, 2024**.
 
-## Allocation List
+Contiguous pages belonging to the same assignment have been grouped into a single YAML entry. Two obvious source inconsistencies were normalized during import and are documented in `allocations.yaml` and `ALLOCATIONS.md`.
 
-See the allocation list in this repository for the currently known assignments.
+## Scratchpad
 
-Before choosing an address range for a new game, please check the list for existing allocations.
+Pages `0x0C0–0x0FF` (`0x3000–0x3FFF`) are designated as non-permanent scratchpad space in the original allocation list. They are represented explicitly and are therefore not shown as available permanent allocations.
 
-If you are developing a new SaveKey/AtariVox-enabled game, please submit your intended allocation so that other developers can avoid using the same range.
+## Attribution
 
-## Contributing
-
-Corrections and additions are welcome.
-
-You can contribute by:
-
-1. Opening an issue with the game name, developer/publisher, and memory range used or requested.
-2. Submitting a pull request that updates the allocation list.
-3. Providing a link or other reference confirming an existing allocation when possible.
-
-For unreleased projects, allocations may be marked as **reserved** or **WIP**.
-
-Please do not change an allocation already used by a released game unless there is clear evidence that the existing entry is incorrect.
-
-## Purpose of This Repository
-
-This repository exists to make the allocation list easier for the Atari 2600 development community to maintain collaboratively.
-
-GitHub provides:
-
-- A history of every change
-- Pull requests for proposed additions
-- Issues for discussing uncertain or conflicting allocations
-- Multiple maintainers, so updates do not depend on a single person
-- A convenient source that can be referenced by developers and documentation
-
-## AtariAge Community
-
-This repository is maintained under **atariage-community** as a community resource.
-
-It is **not an official AtariAge repository** and is not intended to imply ownership of or affiliation with AtariAge.
-
-The `atariage-community` name is simply intended to indicate that the project grew out of discussions within the AtariAge community.
-
-If AtariAge or the original maintainers of the allocation list would prefer a different arrangement, the repository can be renamed or transferred.
-
-## Credits
-
-Thanks to **Albert / AtariAge** for maintaining the original SaveKey/AtariVox memory allocation list, and to the Atari 2600 homebrew community for documenting and coordinating their use of SaveKey-compatible storage.
-
-## License
-
-The allocation data is factual information collected from community sources.
-
-A specific license for repository contributions can be added once the maintainers decide which license is most appropriate.
+Thanks to Albert / AtariAge for maintaining the original SaveKey & AtariVox allocation list, and to the Atari homebrew community for coordinating use of persistent storage.

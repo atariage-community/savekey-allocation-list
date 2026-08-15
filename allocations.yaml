@@ -1,0 +1,541 @@
+# Canonical SaveKey / AtariVox memory allocation registry.
+#
+# Contributors: edit this file and submit a pull request.
+# Page/address values shown elsewhere are derived from the page numbers here.
+
+format_version: 1
+page_size: 64
+total_pages: 512
+default_platform: "Atari 2600"
+
+source:
+  name: "AtariAge SaveKey & AtariVox memory allocation list"
+  url: "https://atariage.com/atarivox/atarivox_mem_list.html"
+  source_last_updated: "2024-04-14"
+  imported: "2026-08-15"
+
+allocations:
+  - title: "System Settings"
+    kind: system
+    status: allocated
+    pages:
+      start: 0x000
+      end: 0x000
+    notes: "TV mode"
+
+  - title: "Man Goes Down"
+    developer: "Alex Herbert"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x001
+      end: 0x001
+
+  - title: "Fall Down"
+    developer: "Aaron Curtis"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x002
+      end: 0x002
+
+  - title: "Go Fish!"
+    developer: "Bob Montgomery"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x003
+      end: 0x003
+
+  - title: "Strat-O-Gems"
+    developer: "John Payson"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x004
+      end: 0x007
+
+  - title: "AStar"
+    developer: "Aaron Curtis"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x008
+      end: 0x008
+
+  - title: "bonQ"
+    developer: "Ken Siders"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x009
+      end: 0x00A
+
+  - title: "Lead / Pitch'n'Catch"
+    developer: "Simone Serra"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x00B
+      end: 0x00B
+
+  - title: "Elevators Amiss"
+    developer: "Bob Montgomery"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x00C
+      end: 0x00C
+
+  - title: "Juno First"
+    developer: "Chris Walton"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x00D
+      end: 0x00D
+
+  - title: "Karate Master"
+    developer: "Greg Kennedy"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x00E
+      end: 0x00E
+
+  - title: "Halloween game TBA"
+    developer: "Mark Ball"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x00F
+      end: 0x00F
+
+  - title: "Duck Attack!"
+    developer: "Will Nicholes"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x010
+      end: 0x011
+
+  - title: "Monster!"
+    developer: "Mark Ball"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x012
+      end: 0x012
+
+  - title: "Worm!"
+    developer: "Mark Ball"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x013
+      end: 0x013
+
+  - title: "Indenture"
+    developer: "Will Nicholes"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x014
+      end: 0x015
+
+  - title: "AtariVox Spell & Speak"
+    developer: "Mike Saarna"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x016
+      end: 0x017
+
+  - title: "Boulder Dash"
+    developer: "Andrew Davie & Thomas Jentzsch"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x018
+      end: 0x018
+
+  - title: "Gate Racer"
+    developer: "Steve Engelhardt"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x019
+      end: 0x019
+
+  - title: "Heartbreak"
+    developer: "Shane Lloyd"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x01A
+      end: 0x01A
+
+  - title: "Circus AtariAge"
+    developer: "Jeff Johnson"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x01B
+      end: 0x01B
+
+  - title: "Wall Jump Ninja"
+    developer: "Tim FitzRandolph"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x01C
+      end: 0x01C
+
+  - title: "Dr.V.Dalek Berzerk"
+    developer: "Michael Haas"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x01D
+      end: 0x01D
+    source_correction: "The AtariAge page labels this row as page 0x01C, but address 0x0740-0x077F corresponds to page 0x01D."
+
+  - title: "Scramble"
+    developer: "John W. Champeau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x01E
+      end: 0x01F
+
+  - title: "Assembloids"
+    developer: "Dr. Martin Wendt"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x020
+      end: 0x020
+
+  - title: "Drive!"
+    developer: "Lumi"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x021
+      end: 0x021
+
+  - title: "Anguna"
+    developer: "gauauu"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x022
+      end: 0x022
+
+  - title: "Amoeba Jump"
+    developer: "Dion Olsthoorn"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x023
+      end: 0x023
+
+  - title: "Super Cobra"
+    developer: "John W. Champeau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x024
+      end: 0x025
+
+  - title: "Space Game"
+    developer: "kdgarris"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x026
+      end: 0x026
+
+  - title: "Avalanche"
+    developer: "John W. Champeau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x027
+      end: 0x027
+
+  - title: "Mappy"
+    developer: "John W. Champeau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x028
+      end: 0x029
+
+  - title: "Aardvark"
+    developer: "Oscar Toledo Gutiérrez"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x02A
+      end: 0x02A
+
+  - title: "VROOM!"
+    developer: "Thomas Jentzsch"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x02B
+      end: 0x02B
+
+  - title: "Wizard of Wor Arcade"
+    developer: "John W. Champeau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x02C
+      end: 0x02E
+
+  - title: "Undisclosed Atari 7800 Project"
+    platform: "Atari 7800"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x02F
+      end: 0x02F
+
+  - title: "Galagon"
+    developer: "John W. Champeau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x030
+      end: 0x031
+
+  - title: "Tap-A-Mole"
+    developer: "quohog"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x032
+      end: 0x032
+
+  - title: "rubyQ"
+    developer: "Silvio Mogno"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x033
+      end: 0x033
+
+  - title: "Zoo Keeper"
+    developer: "John W. Champeau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x034
+      end: 0x035
+
+  - title: "RobotWar:2684"
+    developer: "John W. Champeau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x036
+      end: 0x037
+
+  - title: "Gorf Arcade"
+    developer: "John W. Champeau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x038
+      end: 0x039
+    source_correction: "The AtariAge page prints the end address for page 0x039 as OE7F; normalized here to 0x0E7F."
+
+  - title: "QYX"
+    developer: "John W. Champeau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x03A
+      end: 0x03B
+
+  - title: "Lady Bug Arcade"
+    developer: "John W. Champeau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x03C
+      end: 0x03E
+
+  - title: "Mallard Season"
+    developer: "Mallard Season"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x03F
+      end: 0x03F
+
+  - title: "Thrust+ Platinum"
+    developer: "Thomas Jentzsch"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x040
+      end: 0x040
+
+  - title: "Berry Fun!"
+    developer: "Mike Littau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x041
+      end: 0x041
+
+  - title: "Turbo Arcade"
+    developer: "John W. Champeau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x042
+      end: 0x043
+
+  - title: "Grizzards"
+    developer: "Bruce-Robert Pocock"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x044
+      end: 0x04C
+
+  - title: "Elevator Agent"
+    developer: "John W. Champeau"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x04D
+      end: 0x04E
+
+  - title: "Minigun Miner"
+    developer: "Dr. Ludos"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x04F
+      end: 0x04F
+
+  - title: "Word Guess"
+    developer: "CardboardBox"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x050
+      end: 0x050
+
+  - title: "Stratovox"
+    developer: "Carlos Centeno"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x051
+      end: 0x051
+
+  - title: "HappyBird"
+    developer: "Bruno STEUX"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x052
+      end: 0x052
+
+  - title: "Bot & Tom"
+    developer: "Thomas Jentzsch"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x054
+      end: 0x056
+
+  - title: "Tutankham Arcade"
+    developer: "Champ Games"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x058
+      end: 0x059
+
+  - title: "Secret Game #1"
+    developer: "Champ Games"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x05A
+      end: 0x05B
+
+  - title: "Secret Game #2"
+    developer: "Champ Games"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x05C
+      end: 0x05D
+
+  - title: "Secret Game #3"
+    developer: "Champ Games"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x05E
+      end: 0x05F
+
+  - title: "Phantasia"
+    developer: "Bruce-Robert Pocock"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x068
+      end: 0x06B
+
+  - title: "Get Lost"
+    developer: "John Harvey"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x078
+      end: 0x07B
+
+  - title: "Scratchpad"
+    kind: scratchpad
+    status: allocated
+    pages:
+      start: 0x0C0
+      end: 0x0FF
+    notes: "Non-permanent scratchpad space."
+
+  - title: "Undisclosed 7800 Project"
+    developer: "CPUWIZ"
+    platform: "Atari 7800"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x100
+      end: 0x103
+
+  - title: "7800 Utility Cart HSC backup/restore"
+    developer: "RevEng"
+    platform: "Atari 7800"
+    kind: utility
+    status: allocated
+    pages:
+      start: 0x160
+      end: 0x17F
+
+  - title: "7800 High Score Storage"
+    developer: "RevEng"
+    platform: "Atari 7800"
+    kind: utility
+    status: allocated
+    pages:
+      start: 0x180
+      end: 0x1FF
