@@ -32,14 +32,17 @@ For most developers, the workflow is:
 1. Fork this repository to your own GitHub account.
 2. Create a branch in your fork.
 3. Edit **only `allocations.yaml`**.
-4. Commit and push your changes.
-5. Open a pull request back to the `main` branch of this repository.
+4. Optionally run the local validator to catch mistakes before pushing:
+   ```sh
+   python -m pip install -r requirements.txt
+   python tools/validate.py allocations.yaml
+   ```
+5. Commit and push your changes.
+6. Open a pull request back to the `main` branch of this repository.
 
-If you already have write access to this repository, you can create a branch directly instead of making a fork.
+You **do not need Python installed locally** to contribute. Validation is always run automatically by GitHub Actions when you submit a pull request.
 
-You **do not need Python installed locally**.
-
-When you submit a pull request, GitHub Actions automatically validates `allocations.yaml`, including checks for invalid or overlapping page ranges.
+Running the validator locally is optional, but recommended if you already have Python available, because it can catch problems such as invalid or overlapping page ranges before you push your changes.
 
 Before choosing a new range, it is still a good idea to check the current allocation map and any open pull requests to see what is already in use or being requested.
 
@@ -77,9 +80,9 @@ Please keep the schema simple. If a new field seems useful, discuss it in an iss
 
 ## Validation
 
-Validation is handled automatically by GitHub Actions, so contributors normally do not need to run anything locally.
+Validation is handled automatically by GitHub Actions for every pull request.
 
-If you do want to validate the file locally, Python 3 and PyYAML are required:
+If you want to validate your changes locally before pushing, Python 3 and PyYAML are required:
 
 ```sh
 python -m pip install -r requirements.txt
