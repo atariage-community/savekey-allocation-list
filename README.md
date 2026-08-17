@@ -122,3 +122,5 @@ Pages `0x0C0–0x0FF` (`0x3000–0x3FFF`) are designated as non-permanent scratc
 ## Attribution
 
 Thanks to Albert / AtariAge for maintaining the original SaveKey & AtariVox allocation list, and to the Atari homebrew community for coordinating use of persistent storage.
+
+Special thanks to RevEng for creating the web-based allocation viewer used by this project.
