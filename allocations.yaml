@@ -201,7 +201,7 @@ allocations:
     source_correction: "The AtariAge page labels this row as page 0x01C, but address 0x0740-0x077F corresponds to page 0x01D."
 
   - title: "Scramble"
-    developer: "John W. Champeau"
+    developer: "Champ Games"
     kind: game
     status: allocated
     pages:
@@ -241,7 +241,7 @@ allocations:
       end: 0x023
 
   - title: "Super Cobra"
-    developer: "John W. Champeau"
+    developer: "Champ Games"
     kind: game
     status: allocated
     pages:
@@ -257,7 +257,7 @@ allocations:
       end: 0x026
 
   - title: "Avalanche"
-    developer: "John W. Champeau"
+    developer: "Champ Games"
     kind: game
     status: allocated
     pages:
@@ -265,7 +265,7 @@ allocations:
       end: 0x027
 
   - title: "Mappy"
-    developer: "John W. Champeau"
+    developer: "Champ Games"
     kind: game
     status: allocated
     pages:
@@ -289,7 +289,7 @@ allocations:
       end: 0x02B
 
   - title: "Wizard of Wor Arcade"
-    developer: "John W. Champeau"
+    developer: "Champ Games"
     kind: game
     status: allocated
     pages:
@@ -305,7 +305,7 @@ allocations:
       end: 0x02F
 
   - title: "Galagon"
-    developer: "John W. Champeau"
+    developer: "Champ Games"
     kind: game
     status: allocated
     pages:
@@ -329,7 +329,7 @@ allocations:
       end: 0x033
 
   - title: "Zoo Keeper"
-    developer: "John W. Champeau"
+    developer: "Champ Games"
     kind: game
     status: allocated
     pages:
@@ -337,7 +337,7 @@ allocations:
       end: 0x035
 
   - title: "RobotWar:2684"
-    developer: "John W. Champeau"
+    developer: "Champ Games"
     kind: game
     status: allocated
     pages:
@@ -345,7 +345,7 @@ allocations:
       end: 0x037
 
   - title: "Gorf Arcade"
-    developer: "John W. Champeau"
+    developer: "Champ Games"
     kind: game
     status: allocated
     pages:
@@ -354,7 +354,7 @@ allocations:
     source_correction: "The AtariAge page prints the end address for page 0x039 as OE7F; normalized here to 0x0E7F."
 
   - title: "QYX"
-    developer: "John W. Champeau"
+    developer: "Champ Games"
     kind: game
     status: allocated
     pages:
@@ -362,7 +362,7 @@ allocations:
       end: 0x03B
 
   - title: "Lady Bug Arcade"
-    developer: "John W. Champeau"
+    developer: "Champ Games"
     kind: game
     status: allocated
     pages:
@@ -394,7 +394,7 @@ allocations:
       end: 0x041
 
   - title: "Turbo Arcade"
-    developer: "John W. Champeau"
+    developer: "Champ Games"
     kind: game
     status: allocated
     pages:
@@ -410,7 +410,7 @@ allocations:
       end: 0x04C
 
   - title: "Elevator Agent"
-    developer: "John W. Champeau"
+    developer: "Champ Games"
     kind: game
     status: allocated
     pages:
@@ -433,7 +433,7 @@ allocations:
       start: 0x050
       end: 0x050
 
-  - title: "Stratovox"
+  - title: "Stratovox, Lucky Chase, Tomahawk 777"
     developer: "Carlos Centeno"
     kind: game
     status: allocated
@@ -449,6 +449,14 @@ allocations:
       start: 0x052
       end: 0x052
 
+  - title: "Boom!"
+    developer: "Chris Walton"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x053
+      end: 0x053
+      
   - title: "Bot & Tom"
     developer: "Thomas Jentzsch"
     kind: game
@@ -457,6 +465,14 @@ allocations:
       start: 0x054
       end: 0x056
 
+  - title: "Squish 'Em Deluxe"
+    developer: "Bob Montgomery"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x057
+      end: 0x057
+      
   - title: "Tutankham Arcade"
     developer: "Champ Games"
     kind: game
@@ -465,7 +481,7 @@ allocations:
       start: 0x058
       end: 0x059
 
-  - title: "Secret Game #1"
+  - title: "Spiders Arcade"
     developer: "Champ Games"
     kind: game
     status: allocated
@@ -473,7 +489,7 @@ allocations:
       start: 0x05A
       end: 0x05B
 
-  - title: "Secret Game #2"
+  - title: "Rip Off"
     developer: "Champ Games"
     kind: game
     status: allocated
@@ -481,14 +497,54 @@ allocations:
       start: 0x05C
       end: 0x05D
 
-  - title: "Secret Game #3"
-    developer: "Champ Games"
+  - title: "Zeviouz"
+    developer: "Chris Walton"
     kind: game
     status: allocated
     pages:
       start: 0x05E
       end: 0x05F
 
+  - title: "Chaotic Grill"
+    developer: "Philip Blackman"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x060
+      end: 0x061
+      
+  - title: "T-Rex Runner"
+    developer: "Fernando Rodrigues Salvio"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x062
+      end: 0x062
+  
+  - title: "GridLock"
+    developer: "Andrew Davie"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x063
+      end: 0x063
+      
+  - title: "Zaxxon Arcade"
+    developer: "Champ Games"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x064
+      end: 0x065
+
+  - title: "Cosmic Dungeon"
+    developer: "Champ Games"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x066
+      end: 0x067      
+    
   - title: "Phantasia"
     developer: "Bruce-Robert Pocock"
     kind: game

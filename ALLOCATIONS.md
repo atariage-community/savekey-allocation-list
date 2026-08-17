@@ -31,42 +31,49 @@ The canonical data in this repository is `allocations.yaml`. Address ranges belo
 | `0x01B` | `0x06C0–0x06FF` | Atari 2600 | Circus AtariAge | Jeff Johnson | game |
 | `0x01C` | `0x0700–0x073F` | Atari 2600 | Wall Jump Ninja | Tim FitzRandolph | game |
 | `0x01D` | `0x0740–0x077F` | Atari 2600 | Dr.V.Dalek Berzerk | Michael Haas | game |
-| `0x01E–0x01F` | `0x0780–0x07FF` | Atari 2600 | Scramble | John W. Champeau | game |
+| `0x01E–0x01F` | `0x0780–0x07FF` | Atari 2600 | Scramble | Champ Games | game |
 | `0x020` | `0x0800–0x083F` | Atari 2600 | Assembloids | Dr. Martin Wendt | game |
 | `0x021` | `0x0840–0x087F` | Atari 2600 | Drive! | Lumi | game |
 | `0x022` | `0x0880–0x08BF` | Atari 2600 | Anguna | gauauu | game |
 | `0x023` | `0x08C0–0x08FF` | Atari 2600 | Amoeba Jump | Dion Olsthoorn | game |
-| `0x024–0x025` | `0x0900–0x097F` | Atari 2600 | Super Cobra | John W. Champeau | game |
+| `0x024–0x025` | `0x0900–0x097F` | Atari 2600 | Super Cobra | Champ Games | game |
 | `0x026` | `0x0980–0x09BF` | Atari 2600 | Space Game | kdgarris | game |
-| `0x027` | `0x09C0–0x09FF` | Atari 2600 | Avalanche | John W. Champeau | game |
-| `0x028–0x029` | `0x0A00–0x0A7F` | Atari 2600 | Mappy | John W. Champeau | game |
+| `0x027` | `0x09C0–0x09FF` | Atari 2600 | Avalanche | Champ Games | game |
+| `0x028–0x029` | `0x0A00–0x0A7F` | Atari 2600 | Mappy | Champ Games | game |
 | `0x02A` | `0x0A80–0x0ABF` | Atari 2600 | Aardvark | Oscar Toledo Gutiérrez | game |
 | `0x02B` | `0x0AC0–0x0AFF` | Atari 2600 | VROOM! | Thomas Jentzsch | game |
-| `0x02C–0x02E` | `0x0B00–0x0BBF` | Atari 2600 | Wizard of Wor Arcade | John W. Champeau | game |
+| `0x02C–0x02E` | `0x0B00–0x0BBF` | Atari 2600 | Wizard of Wor Arcade | Champ Games | game |
 | `0x02F` | `0x0BC0–0x0BFF` | Atari 7800 | Undisclosed Atari 7800 Project |  | game |
-| `0x030–0x031` | `0x0C00–0x0C7F` | Atari 2600 | Galagon | John W. Champeau | game |
+| `0x030–0x031` | `0x0C00–0x0C7F` | Atari 2600 | Galagon | Champ Games | game |
 | `0x032` | `0x0C80–0x0CBF` | Atari 2600 | Tap-A-Mole | quohog | game |
 | `0x033` | `0x0CC0–0x0CFF` | Atari 2600 | rubyQ | Silvio Mogno | game |
-| `0x034–0x035` | `0x0D00–0x0D7F` | Atari 2600 | Zoo Keeper | John W. Champeau | game |
-| `0x036–0x037` | `0x0D80–0x0DFF` | Atari 2600 | RobotWar:2684 | John W. Champeau | game |
-| `0x038–0x039` | `0x0E00–0x0E7F` | Atari 2600 | Gorf Arcade | John W. Champeau | game |
-| `0x03A–0x03B` | `0x0E80–0x0EFF` | Atari 2600 | QYX | John W. Champeau | game |
-| `0x03C–0x03E` | `0x0F00–0x0FBF` | Atari 2600 | Lady Bug Arcade | John W. Champeau | game |
+| `0x034–0x035` | `0x0D00–0x0D7F` | Atari 2600 | Zoo Keeper | Champ Games | game |
+| `0x036–0x037` | `0x0D80–0x0DFF` | Atari 2600 | RobotWar:2684 | Champ Games | game |
+| `0x038–0x039` | `0x0E00–0x0E7F` | Atari 2600 | Gorf Arcade | Champ Games | game |
+| `0x03A–0x03B` | `0x0E80–0x0EFF` | Atari 2600 | QYX | Champ Games | game |
+| `0x03C–0x03E` | `0x0F00–0x0FBF` | Atari 2600 | Lady Bug Arcade | Champ Games | game |
 | `0x03F` | `0x0FC0–0x0FFF` | Atari 2600 | Mallard Season | Mallard Season | game |
 | `0x040` | `0x1000–0x103F` | Atari 2600 | Thrust+ Platinum | Thomas Jentzsch | game |
 | `0x041` | `0x1040–0x107F` | Atari 2600 | Berry Fun! | Mike Littau | game |
-| `0x042–0x043` | `0x1080–0x10FF` | Atari 2600 | Turbo Arcade | John W. Champeau | game |
+| `0x042–0x043` | `0x1080–0x10FF` | Atari 2600 | Turbo Arcade | Champ Games | game |
 | `0x044–0x04C` | `0x1100–0x133F` | Atari 2600 | Grizzards | Bruce-Robert Pocock | game |
-| `0x04D–0x04E` | `0x1340–0x13BF` | Atari 2600 | Elevator Agent | John W. Champeau | game |
+| `0x04D–0x04E` | `0x1340–0x13BF` | Atari 2600 | Elevator Agent | Champ Games | game |
 | `0x04F` | `0x13C0–0x13FF` | Atari 2600 | Minigun Miner | Dr. Ludos | game |
 | `0x050` | `0x1400–0x143F` | Atari 2600 | Word Guess | CardboardBox | game |
-| `0x051` | `0x1440–0x147F` | Atari 2600 | Stratovox | Carlos Centeno | game |
+| `0x051` | `0x1440–0x147F` | Atari 2600 | Stratovox, Lucky Chase, Tomahawk 777 | Carlos Centeno | game |
 | `0x052` | `0x1480–0x14BF` | Atari 2600 | HappyBird | Bruno STEUX | game |
+| `0x053` | `0x14C0–0x14FF` | Atari 2600 | Boom! | Chris Walton | game |
 | `0x054–0x056` | `0x1500–0x15BF` | Atari 2600 | Bot & Tom | Thomas Jentzsch | game |
+| `0x057` | `0x15C0–0x15FF` | Atari 2600 | Squish 'Em Deluxe | Bob Montgomery | game |
 | `0x058–0x059` | `0x1600–0x167F` | Atari 2600 | Tutankham Arcade | Champ Games | game |
-| `0x05A–0x05B` | `0x1680–0x16FF` | Atari 2600 | Secret Game #1 | Champ Games | game |
-| `0x05C–0x05D` | `0x1700–0x177F` | Atari 2600 | Secret Game #2 | Champ Games | game |
-| `0x05E–0x05F` | `0x1780–0x17FF` | Atari 2600 | Secret Game #3 | Champ Games | game |
+| `0x05A–0x05B` | `0x1680–0x16FF` | Atari 2600 | Spiders Arcade | Champ Games | game |
+| `0x05C–0x05D` | `0x1700–0x177F` | Atari 2600 | Rip Off | Champ Games | game |
+| `0x05E–0x05F` | `0x1780–0x17FF` | Atari 2600 | Zeviouz | Chris Walton | game |
+| `0x060–0x061` | `0x1800–0x187F` | Atari 2600 | Chaotic Grill | Philip Blackman | game |
+| `0x062` | `0x1880–0x18BF` | Atari 2600 | T-Rex Runner | Fernando Rodrigues Salvio | game |
+| `0x063` | `0x18C0–0x18FF` | Atari 2600 | GridLock | Andrew Davie | game |
+| `0x064–0x065` | `0x1900–0x197F` | Atari 2600 | Zaxxon Arcade | Champ Games | game |
+| `0x066–0x067` | `0x1980–0x19FF` | Atari 2600 | Cosmic Dungeon | Champ Games | game |
 | `0x068–0x06B` | `0x1A00–0x1AFF` | Atari 2600 | Phantasia | Bruce-Robert Pocock | game |
 | `0x078–0x07B` | `0x1E00–0x1EFF` | Atari 2600 | Get Lost | John Harvey | game |
 | `0x0C0–0x0FF` | `0x3000–0x3FFF` | Atari 2600 | Scratchpad |  | scratchpad |
@@ -80,9 +87,6 @@ These ranges are calculated from the registry. Always check open pull requests a
 
 | Pages | Address range | Pages available |
 |---:|---:|---:|
-| `0x053` | `0x14C0–0x14FF` | 1 |
-| `0x057` | `0x15C0–0x15FF` | 1 |
-| `0x060–0x067` | `0x1800–0x19FF` | 8 |
 | `0x06C–0x077` | `0x1B00–0x1DFF` | 12 |
 | `0x07C–0x0BF` | `0x1F00–0x2FFF` | 68 |
 | `0x104–0x15F` | `0x4100–0x57FF` | 92 |
