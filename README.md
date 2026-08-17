@@ -40,9 +40,7 @@ For most developers, the workflow is:
 5. Commit and push your changes.
 6. Open a pull request back to the `main` branch of this repository.
 
-You **do not need Python installed locally** to contribute. Validation is always run automatically by GitHub Actions when you submit a pull request.
-
-Running the validator locally is optional, but recommended if you already have Python available, because it can catch problems such as invalid or overlapping page ranges before you push your changes.
+You **do not need Python installed locally** to contribute. GitHub Actions automatically validates every pull request. If you already have Python installed, running the validator locally is optional but recommended. It can catch problems, such as invalid or overlapping page ranges, before you push your changes.
 
 Before choosing a new range, it is still a good idea to check the current allocation map and any open pull requests to see what is already in use or being requested.
 
