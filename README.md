@@ -8,27 +8,43 @@ The goal is to provide one easy-to-review place where developers can reserve per
 
 ## The canonical file
 
-**[`allocations.yaml`](allocations.yaml) is the source of truth.**
+**[`allocations.yaml`](allocations.yaml) is the single source of truth.**
 
-[`ALLOCATIONS.md`](ALLOCATIONS.md) is generated from the YAML and provides a convenient table of allocated and currently unallocated ranges.
+All allocation data is maintained in this file.
 
-The registry uses **64-byte pages**. The address range is derived from the page number, so contributors do not have to maintain both values manually:
+For a human-friendly view of the current allocation map, including a visual memory map, search and filtering, see:
+
+https://atariage-community.github.io/savekey-allocation-list/allocations.html
+
+The web interface reads the allocation data directly from `allocations.yaml`, so there is no separate generated allocation list that needs to be kept in sync.
+
+The registry uses **64-byte pages**. Address ranges are derived from the page numbers:
 
 - start address = `page × 64`
 - end address = `start address + 63`
 
 This avoids page/address mismatches.
 
-## Reserving space
+## Adding or changing an allocation
 
-1. Check [`ALLOCATIONS.md`](ALLOCATIONS.md) and current open pull requests/issues for conflicts.
-2. Add your project to `allocations.yaml`.
-3. Set `status: reserved` for a new reservation, or `status: allocated` for an already established allocation.
-4. Run the validator.
-5. Regenerate `ALLOCATIONS.md`.
-6. Submit a pull request.
+For most developers, the workflow is:
 
-Example:
+1. Fork this repository to your own GitHub account.
+2. Create a branch in your fork.
+3. Edit **only `allocations.yaml`**.
+4. Optionally run the local validator to catch mistakes before pushing:
+   ```sh
+   python -m pip install -r requirements.txt
+   python tools/validate.py allocations.yaml
+   ```
+5. Commit and push your changes.
+6. Open a pull request back to the `main` branch of this repository.
+
+You **do not need Python installed locally** to contribute. GitHub Actions automatically validates every pull request. If you already have Python installed, running the validator locally is optional but recommended. It can catch problems, such as invalid or overlapping page ranges, before you push your changes.
+
+Before choosing a new range, it is still a good idea to check the current allocation map and any open pull requests to see what is already in use or being requested.
+
+Example allocation:
 
 ```yaml
   - title: "My New Game"
@@ -41,7 +57,9 @@ Example:
     notes: "High scores and game settings"
 ```
 
-If you are not comfortable creating a pull request, open an issue with the project name, developer, requested number of pages, and any preferred range. A maintainer can add it for you.
+Use `status: reserved` when requesting space for a new or unreleased project, and `status: allocated` for an allocation already in use.
+
+If you are not comfortable using Git or creating a pull request, simply open an issue with the project name, developer, requested number of pages, and any preferred range. A maintainer can add it for you.
 
 ## Fields
 
@@ -58,17 +76,34 @@ Each allocation supports:
 
 Please keep the schema simple. If a new field seems useful, discuss it in an issue before adding it broadly.
 
-## Validate and generate
+## Validation
 
-Requires Python 3 and PyYAML:
+Validation is handled automatically by GitHub Actions for every pull request.
+
+If you want to validate your changes locally before pushing, Python 3 and PyYAML are required:
 
 ```sh
 python -m pip install -r requirements.txt
 python tools/validate.py allocations.yaml
-python tools/generate.py allocations.yaml ALLOCATIONS.md
 ```
 
-The GitHub Actions workflow runs validation and checks that `ALLOCATIONS.md` has been regenerated.
+`validate.py` checks the allocation data for problems such as invalid ranges and overlapping allocations.
+
+## Repository structure
+
+The important parts of the repository are:
+
+```text
+allocations.yaml              # canonical allocation data
+docs/
+  allocations.html            # public web interface
+tools/
+  validate.py                 # allocation validator
+.github/workflows/
+  validate.yml                # automatic validation for pull requests
+```
+
+There is intentionally no generated `ALLOCATIONS.md`. The YAML file is the authoritative data source, while the GitHub Pages interface provides the human-readable view.
 
 ## Imported source
 
@@ -78,7 +113,7 @@ https://atariage.com/atarivox/atarivox_mem_list.html
 
 The AtariAge page states that it was last updated **April 14, 2024**.
 
-Contiguous pages belonging to the same assignment have been grouped into a single YAML entry. Two obvious source inconsistencies were normalized during import and are documented in `allocations.yaml` and `ALLOCATIONS.md`.
+Contiguous pages belonging to the same assignment have been grouped into a single YAML entry. Two obvious source inconsistencies were normalized during import and are documented in `allocations.yaml`.
 
 ## Scratchpad
 
@@ -87,3 +122,5 @@ Pages `0x0C0–0x0FF` (`0x3000–0x3FFF`) are designated as non-permanent scratc
 ## Attribution
 
 Thanks to Albert / AtariAge for maintaining the original SaveKey & AtariVox allocation list, and to the Atari homebrew community for coordinating use of persistent storage.
+
+Special thanks to RevEng for creating the web-based allocation viewer used by this project.
