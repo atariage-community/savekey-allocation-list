@@ -14,7 +14,7 @@ The canonical data in this repository is `allocations.yaml`. Address ranges belo
 | `0x003` | `0x00C0–0x00FF` | Atari 2600 | Go Fish! | Bob Montgomery | game |
 | `0x004–0x007` | `0x0100–0x01FF` | Atari 2600 | Strat-O-Gems | John Payson | game |
 | `0x008` | `0x0200–0x023F` | Atari 2600 | AStar | Aaron Curtis | game |
-| `0x009–0x00A` | `0x0240–0x02BF` | Atari 2600 | bonQ | Ken Siders | game |
+| `0x009–0x00A` | `0x0240–0x02BF` | Atari 7800 | bonQ | Ken Siders | game |
 | `0x00B` | `0x02C0–0x02FF` | Atari 2600 | Lead / Pitch'n'Catch | Simone Serra | game |
 | `0x00C` | `0x0300–0x033F` | Atari 2600 | Elevators Amiss | Bob Montgomery | game |
 | `0x00D` | `0x0340–0x037F` | Atari 2600 | Juno First | Chris Walton | game |
@@ -34,16 +34,16 @@ The canonical data in this repository is `allocations.yaml`. Address ranges belo
 | `0x01E–0x01F` | `0x0780–0x07FF` | Atari 2600 | Scramble | John W. Champeau | game |
 | `0x020` | `0x0800–0x083F` | Atari 2600 | Assembloids | Dr. Martin Wendt | game |
 | `0x021` | `0x0840–0x087F` | Atari 2600 | Drive! | Lumi | game |
-| `0x022` | `0x0880–0x08BF` | Atari 2600 | Anguna | gauauu | game |
+| `0x022` | `0x0880–0x08BF` | Atari 2600 | Anguna |  Nathan Tolbert (gauauu) | game |
 | `0x023` | `0x08C0–0x08FF` | Atari 2600 | Amoeba Jump | Dion Olsthoorn | game |
-| `0x024–0x025` | `0x0900–0x097F` | Atari 2600 | Super Cobra | John W. Champeau | game |
+| `0x024–0x025` | `0x0900–0x097F` | Atari 2600 | Super Cobra Arcade | John W. Champeau | game |
 | `0x026` | `0x0980–0x09BF` | Atari 2600 | Space Game | kdgarris | game |
 | `0x027` | `0x09C0–0x09FF` | Atari 2600 | Avalanche | John W. Champeau | game |
 | `0x028–0x029` | `0x0A00–0x0A7F` | Atari 2600 | Mappy | John W. Champeau | game |
 | `0x02A` | `0x0A80–0x0ABF` | Atari 2600 | Aardvark | Oscar Toledo Gutiérrez | game |
 | `0x02B` | `0x0AC0–0x0AFF` | Atari 2600 | VROOM! | Thomas Jentzsch | game |
 | `0x02C–0x02E` | `0x0B00–0x0BBF` | Atari 2600 | Wizard of Wor Arcade | John W. Champeau | game |
-| `0x02F` | `0x0BC0–0x0BFF` | Atari 7800 | Undisclosed Atari 7800 Project |  | game |
+| `0x02F` | `0x0BC0–0x0BFF` | Atari 7800 | Undisclosed Atari 7800 Project | unknown | game |
 | `0x030–0x031` | `0x0C00–0x0C7F` | Atari 2600 | Galagon | John W. Champeau | game |
 | `0x032` | `0x0C80–0x0CBF` | Atari 2600 | Tap-A-Mole | quohog | game |
 | `0x033` | `0x0CC0–0x0CFF` | Atari 2600 | rubyQ | Silvio Mogno | game |
@@ -68,7 +68,7 @@ The canonical data in this repository is `allocations.yaml`. Address ranges belo
 | `0x05C–0x05D` | `0x1700–0x177F` | Atari 2600 | Secret Game #2 | Champ Games | game |
 | `0x05E–0x05F` | `0x1780–0x17FF` | Atari 2600 | Secret Game #3 | Champ Games | game |
 | `0x068–0x06B` | `0x1A00–0x1AFF` | Atari 2600 | Phantasia | Bruce-Robert Pocock | game |
-| `0x078–0x07B` | `0x1E00–0x1EFF` | Atari 2600 | Get Lost | John Harvey | game |
+| `0x078–0x07B` | `0x1E00–0x1EFF` | Atari 7800 | Get Lost | John K. Harvey | game |
 | `0x0C0–0x0FF` | `0x3000–0x3FFF` | Atari 2600 | Scratchpad |  | scratchpad |
 | `0x100–0x103` | `0x4000–0x40FF` | Atari 7800 | Undisclosed 7800 Project | CPUWIZ | game |
 | `0x160–0x17F` | `0x5800–0x5FFF` | Atari 7800 | 7800 Utility Cart HSC backup/restore | RevEng | utility |
@@ -98,4 +98,5 @@ Source last updated: 2024-04-14
 ## Source notes
 
 - **Dr.V.Dalek Berzerk**: The AtariAge page labels this row as page 0x01C, but address 0x0740-0x077F corresponds to page 0x01D.
+- **Super Cobra Arcade**: The AtariAge page labels this game as Super Cobra, when it's actually Super Cobra Arcade
 - **Gorf Arcade**: The AtariAge page prints the end address for page 0x039 as OE7F; normalized here to 0x0E7F.
