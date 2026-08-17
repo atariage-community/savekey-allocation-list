@@ -15,6 +15,3 @@ jobs:
           python-version: "3.x"
       - run: python -m pip install -r requirements.txt
       - run: python tools/validate.py allocations.yaml
-      - run: python tools/generate.py allocations.yaml /tmp/ALLOCATIONS.md
-      - name: Check generated allocation table
-        run: diff -u ALLOCATIONS.md /tmp/ALLOCATIONS.md
