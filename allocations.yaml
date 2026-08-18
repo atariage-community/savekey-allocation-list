@@ -1,9 +1,9 @@
 # Canonical SaveKey / AtariVox memory allocation registry.
 #
 # Contributors: edit this file and submit a pull request.
-# Page/address values shown elsewhere are derived from the page numbers here.
+# Full-page address values shown elsewhere are derived from the page numbers here.
 
-format_version: 1
+format_version: 2
 page_size: 64
 total_pages: 512
 default_platform: "Atari 2600"
@@ -261,7 +261,34 @@ allocations:
     pages:
       start: 0x023
       end: 0x023
+    addresses:
+      start: 0x08C0
+      end: 0x08C2
     notes: "https://store.atariage.com/products/amoeba-jump-atari-2600 (verified August 17, 2026)"
+
+  - title: "Tower of Rubble"
+    developer: "Dion Olsthoorn"
+    platform: "Atari 2600"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x023
+      end: 0x023
+    addresses:
+      start: 0x08D0
+      end: 0x08D4
+
+  - title: "Lode Runner"
+    developer: "Dion Olsthoorn"
+    platform: "Atari 2600"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x023
+      end: 0x023
+    addresses:
+      start: 0x08E0
+      end: 0x08E7
 
   - title: "Super Cobra Arcade"
     developer: "John W. Champeau"

@@ -280,7 +280,8 @@
       pointer-events: none;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85);
       font-family: var(--font-mono);
-      max-width: 280px;
+      width: max-content;
+      max-width: min(420px, calc(100vw - 32px));
     }
 
     /* Toolbar: Search & Filters */
@@ -806,6 +807,9 @@
  */
 
 const GITHUB_YAML_URL = "https://raw.githubusercontent.com/atariage-community/savekey-allocation-list/refs/heads/main/allocations.yaml";
+const ALLOCATIONS_YAML_URL = ["localhost", "127.0.0.1"].includes(window.location.hostname)
+  ? "../allocations.yaml"
+  : GITHUB_YAML_URL;
 const DEFAULT_PAGE_SIZE = 64;
 const DEFAULT_TOTAL_PAGES = 512;
 const GRID_COLUMNS = 32;
@@ -815,7 +819,7 @@ const CORNER_RADIUS_PX = "4px";
 // Master state
 let registryMetadata = null;
 let unifiedAllocations = [];
-let pageToAllocMap = new Map(); // pageIndex (0..511) -> allocation object
+let pageToAllocMap = new Map(); // pageIndex (0..511) -> allocation objects
 
 // Formatting helpers
 function toHex(val, padding = 2) {
@@ -839,6 +843,10 @@ function calculateAddressRange(startPage, endPage, pageSize) {
   return `${toHex(startAddr, 4)} - ${toHex(endAddr, 4)}`;
 }
 
+function formatAddressRange(startAddress, endAddress) {
+  return `${toHex(startAddress, 4)} - ${toHex(endAddress, 4)}`;
+}
+
 /**
  * Parses raw YAML and builds normalized list with synthesized unallocated gaps
  */
@@ -848,7 +856,12 @@ function processAllocations(rawYaml) {
   const defaultPlatform = rawYaml.default_platform || "Atari 2600";
 
   const rawAllocations = rawYaml.allocations || [];
-  rawAllocations.sort((a, b) => a.pages.start - b.pages.start);
+  rawAllocations.sort((a, b) => {
+    const pageDifference = a.pages.start - b.pages.start;
+    if (pageDifference !== 0) return pageDifference;
+    return (a.addresses?.start ?? a.pages.start * pageSize) -
+           (b.addresses?.start ?? b.pages.start * pageSize);
+  });
 
   const processed = [];
   let currentPageTracker = 0;
@@ -881,6 +894,8 @@ function processAllocations(rawYaml) {
     }
 
     const count = end - start + 1;
+    const addressStart = item.addresses?.start ?? start * pageSize;
+    const addressEnd = item.addresses?.end ?? (end + 1) * pageSize - 1;
     processed.push({
       id: `alloc-${allocCounter++}`,
       title: item.title,
@@ -889,9 +904,10 @@ function processAllocations(rawYaml) {
       kind: item.kind || "game",
       status: item.status || "allocated",
       pages: { start, end },
+      addresses: { start: addressStart, end: addressEnd },
       pageCount: count,
-      byteCount: count * pageSize,
-      addressRange: calculateAddressRange(start, end, pageSize),
+      byteCount: addressEnd - addressStart + 1,
+      addressRange: formatAddressRange(addressStart, addressEnd),
       pageRangeFormatted: formatPageRange(start, end),
       notes: item.notes || "",
       sourceCorrection: item.source_correction || ""
@@ -926,7 +942,9 @@ function processAllocations(rawYaml) {
   pageToAllocMap.clear();
   for (const item of processed) {
     for (let p = item.pages.start; p <= item.pages.end; p++) {
-      pageToAllocMap.set(p, item);
+      const pageItems = pageToAllocMap.get(p) || [];
+      pageItems.push(item);
+      pageToAllocMap.set(p, pageItems);
     }
   }
 
@@ -942,7 +960,7 @@ async function initApp() {
   const errorBanner = document.getElementById("error-banner");
 
   try {
-    const response = await fetch(GITHUB_YAML_URL, { cache: "no-cache" });
+    const response = await fetch(ALLOCATIONS_YAML_URL, { cache: "no-cache" });
     if (!response.ok) {
       throw new Error(`HTTP Error ${response.status}: Unable to fetch allocations.yaml`);
     }
@@ -977,18 +995,21 @@ function renderStats() {
   const totalPages = registryMetadata.total_pages || DEFAULT_TOTAL_PAGES;
   const pageSize = registryMetadata.page_size || DEFAULT_PAGE_SIZE;
 
-  let allocatedPages = 0;
+  const allocatedPages = new Set();
   for (const item of unifiedAllocations) {
     if (item.kind !== "unallocated") {
-      allocatedPages += item.pageCount;
+      for (let page = item.pages.start; page <= item.pages.end; page++) {
+        allocatedPages.add(page);
+      }
     }
   }
 
-  const freePages = totalPages - allocatedPages;
-  const utilizationPct = ((allocatedPages / totalPages) * 100).toFixed(1);
+  const allocatedPageCount = allocatedPages.size;
+  const freePages = totalPages - allocatedPageCount;
+  const utilizationPct = ((allocatedPageCount / totalPages) * 100).toFixed(1);
 
   document.getElementById("stat-total-size").textContent = `${(totalPages * pageSize) / 1024} KB (${totalPages} pages)`;
-  document.getElementById("stat-allocated-pages").textContent = `${allocatedPages} (${((allocatedPages * pageSize) / 1024).toFixed(1)} KB)`;
+  document.getElementById("stat-allocated-pages").textContent = `${allocatedPageCount} (${((allocatedPageCount * pageSize) / 1024).toFixed(1)} KB)`;
   document.getElementById("stat-free-pages").textContent = `${freePages} (${((freePages * pageSize) / 1024).toFixed(1)} KB)`;
   document.getElementById("stat-utilization").textContent = `${utilizationPct}%`;
 }
@@ -1026,28 +1047,28 @@ function computeCellBoundaries(pageIndex, totalPages) {
   const row = Math.floor(pageIndex / GRID_COLUMNS);
   const totalRows = Math.ceil(totalPages / GRID_COLUMNS);
   
-  const currentItem = pageToAllocMap.get(pageIndex);
-  const currentId = currentItem ? currentItem.id : null;
+  const currentItems = pageToAllocMap.get(pageIndex) || [];
+  const currentId = currentItems.map(item => item.id).join("|");
 
   // West neighbor
   const westIndex = pageIndex - 1;
-  const westItem = (col > 0 && westIndex >= 0) ? pageToAllocMap.get(westIndex) : null;
-  const borderWest = (col === 0) || !westItem || (westItem.id !== currentId);
+  const westItems = (col > 0 && westIndex >= 0) ? pageToAllocMap.get(westIndex) || [] : [];
+  const borderWest = (col === 0) || (westItems.map(item => item.id).join("|") !== currentId);
 
   // East neighbor
   const eastIndex = pageIndex + 1;
-  const eastItem = (col < GRID_COLUMNS - 1 && eastIndex < totalPages) ? pageToAllocMap.get(eastIndex) : null;
-  const borderEast = (col === GRID_COLUMNS - 1) || !eastItem || (eastItem.id !== currentId);
+  const eastItems = (col < GRID_COLUMNS - 1 && eastIndex < totalPages) ? pageToAllocMap.get(eastIndex) || [] : [];
+  const borderEast = (col === GRID_COLUMNS - 1) || (eastItems.map(item => item.id).join("|") !== currentId);
 
   // North neighbor
   const northIndex = pageIndex - GRID_COLUMNS;
-  const northItem = (row > 0 && northIndex >= 0) ? pageToAllocMap.get(northIndex) : null;
-  const borderNorth = (row === 0) || !northItem || (northItem.id !== currentId);
+  const northItems = (row > 0 && northIndex >= 0) ? pageToAllocMap.get(northIndex) || [] : [];
+  const borderNorth = (row === 0) || (northItems.map(item => item.id).join("|") !== currentId);
 
   // South neighbor
   const southIndex = pageIndex + GRID_COLUMNS;
-  const southItem = (row < totalRows - 1 && southIndex < totalPages) ? pageToAllocMap.get(southIndex) : null;
-  const borderSouth = (row === totalRows - 1) || !southItem || (southItem.id !== currentId);
+  const southItems = (row < totalRows - 1 && southIndex < totalPages) ? pageToAllocMap.get(southIndex) || [] : [];
+  const borderSouth = (row === totalRows - 1) || (southItems.map(item => item.id).join("|") !== currentId);
 
   return {
     borderNorth,
@@ -1071,11 +1092,12 @@ function renderMemoryVisualizer() {
   const tooltip = document.getElementById("tooltip");
 
   for (let p = 0; p < totalPages; p++) {
-    const item = pageToAllocMap.get(p);
+    const items = pageToAllocMap.get(p) || [];
+    const item = items[0];
     const block = document.createElement("div");
     block.className = "mem-block";
     block.dataset.page = p;
-    block.dataset.allocId = item ? item.id : "";
+    block.dataset.allocIds = items.map(pageItem => pageItem.id).join(" ");
 
     const baseColor = getItemBaseColor(item);
     const rimColor = getItemRimColor(item);
@@ -1097,30 +1119,32 @@ function renderMemoryVisualizer() {
 
     // Mouse Interaction
     block.addEventListener("mouseenter", (e) => {
-      setGroupHover(item ? item.id : null, true);
+      items.forEach(pageItem => setGroupHover(pageItem.id, true));
 
       const pageHex = "0x" + toHex(p, 3);
       const addrStart = toHex(p * 64, 4);
       const addrEnd = toHex((p + 1) * 64 - 1, 4);
       
       tooltip.innerHTML = `
-        <div style="font-weight:700; color:${rimColor};">${item ? item.title : "Free"}</div>
+        <div style="font-weight:700; color:${rimColor};">${item ? items.map(pageItem => pageItem.title).join(" / ") : "Free"}</div>
         <div style="margin-top:4px;">Page: <strong>${pageHex}</strong> (dec ${p})</div>
         <div>Addr: <strong>${addrStart} - ${addrEnd}</strong></div>
-        ${item && item.developer ? `<div>Author: ${item.developer}</div>` : ""}
-        ${item ? `<div style="font-size:0.7rem; color:#94a3b8; margin-top:2px;">Type: ${item.kind.toUpperCase()} (${item.platform})</div>` : ""}
-        ${item && item.pageCount > 1 ? `<div style="font-size:0.7rem; color:#60a5fa; margin-top:2px;">Span: ${item.pageCount} contiguous pages (${item.byteCount} bytes)</div>` : ""}
+        ${items.map(pageItem => `<div style="font-size:0.7rem; color:#94a3b8; margin-top:2px;">${pageItem.title}: ${pageItem.addressRange} (${pageItem.byteCount} bytes)</div>`).join("")}
       `;
       tooltip.style.display = "block";
     });
 
     block.addEventListener("mousemove", (e) => {
-      tooltip.style.left = (e.pageX + 14) + "px";
-      tooltip.style.top = (e.pageY + 14) + "px";
+      const offset = 14;
+      const viewportMargin = 16;
+      const maxLeft = window.scrollX + window.innerWidth - tooltip.offsetWidth - viewportMargin;
+      const maxTop = window.scrollY + window.innerHeight - tooltip.offsetHeight - viewportMargin;
+      tooltip.style.left = Math.max(window.scrollX + viewportMargin, Math.min(e.pageX + offset, maxLeft)) + "px";
+      tooltip.style.top = Math.max(window.scrollY + viewportMargin, Math.min(e.pageY + offset, maxTop)) + "px";
     });
 
     block.addEventListener("mouseleave", () => {
-      setGroupHover(item ? item.id : null, false);
+      items.forEach(pageItem => setGroupHover(pageItem.id, false));
       tooltip.style.display = "none";
     });
 
@@ -1141,7 +1165,7 @@ function renderMemoryVisualizer() {
 function setGroupHover(allocId, isActive) {
   if (!allocId) return;
 
-  const blocks = document.querySelectorAll(`.mem-block[data-alloc-id="${allocId}"]`);
+  const blocks = document.querySelectorAll(`.mem-block[data-alloc-ids~="${allocId}"]`);
   blocks.forEach(b => {
     if (isActive) {
       b.classList.add("highlight-active");

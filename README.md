@@ -18,12 +18,18 @@ https://atariage-community.github.io/savekey-allocation-list/allocations.html
 
 The web interface reads the allocation data directly from `allocations.yaml`, so there is no separate generated allocation list that needs to be kept in sync.
 
-The registry uses **64-byte pages**. Address ranges are derived from the page numbers:
+The registry uses **64-byte pages**. By default, address ranges are derived from the page numbers:
 
 - start address = `page × 64`
 - end address = `start address + 63`
 
 This avoids page/address mismatches.
+
+A developer is normally assigned a complete 64-byte page. Because a game may
+use only part of that page, the assigned developer can document multiple games
+on the same page by declaring each game's exact inclusive
+`addresses.start` / `addresses.end` range. These byte ranges must not overlap
+and must fall within, and cover the same page or pages as, the `pages` range.
 
 ## Adding or changing an allocation
 
@@ -71,10 +77,28 @@ Each allocation supports:
 - `kind` — `game`, `system`, `scratchpad`, or `utility`
 - `status` — `reserved`, `allocated`, or `retired`
 - `pages.start` / `pages.end` — inclusive hexadecimal page range
+- `addresses.start` / `addresses.end` — optional inclusive hexadecimal byte range for a partial-page allocation
 - `notes` — optional additional information
 - `source_correction` — optional note documenting normalization/correction of source data
 
 Please keep the schema simple. If a new field seems useful, discuss it in an issue before adding it broadly.
+
+Shared-page allocations are represented as separate entries. For example:
+
+```yaml
+  - title: "Small Save"
+    developer: "Your Name"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x023
+      end: 0x023
+    addresses:
+      start: 0x08C0
+      end: 0x08C2
+```
+
+Omit `addresses` when the allocation reserves complete pages.
 
 ## Validation
 
@@ -87,7 +111,7 @@ python -m pip install -r requirements.txt
 python tools/validate.py allocations.yaml
 ```
 
-`validate.py` checks the allocation data for problems such as invalid ranges and overlapping allocations.
+`validate.py` checks the allocation data for problems such as invalid ranges and overlapping byte allocations.
 
 ## Repository structure
 
