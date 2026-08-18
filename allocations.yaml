@@ -139,7 +139,7 @@ allocations:
     developer: "Mark Ball"
     platform: "Atari 7800"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: 0x012
       end: 0x012
