@@ -30,6 +30,7 @@ allocations:
     pages:
       start: 0x001
       end: 0x001
+    notes: "https://forums.atariage.com/topic/53689-my-1st-atari-2600-game-man-goes-down/page/18/ - WIP, never finalized nor published 'officially'. Arguably, should retain its slot due to wide adoption. (reviewed August 17, 2026)"
 
   - title: "Fall Down"
     developer: "Aaron Curtis"
@@ -98,11 +99,13 @@ allocations:
 
   - title: "Juno First"
     developer: "Chris Walton"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
       start: 0x00D
       end: 0x00D
+    notes: "https://champ.games/store/ols/products/cart-juno-first (verified August 17, 2026)"
 
   - title: "Karate Master"
     developer: "Greg Kennedy"
@@ -114,11 +117,13 @@ allocations:
 
   - title: "Halloween game TBA"
     developer: "Mark Ball"
+    platform: "Atari 7800"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: 0x00F
       end: 0x00F
+    notes: "https://forums.atariage.com/topic/152901-7800-happy-halloween/ (never released on cart, seen at 2010 CGExpo, abandoned? - status as of August 17, 2026)"
 
   - title: "Duck Attack!"
     developer: "Will Nicholes"
@@ -132,19 +137,23 @@ allocations:
 
   - title: "Monster!"
     developer: "Mark Ball"
+    platform: "Atari 7800"
     kind: game
     status: allocated
     pages:
       start: 0x012
       end: 0x012
+    notes: "https://forums.atariage.com/topic/156877-monster-wip/ (never released on cart, abandoned? - status as of August 17, 2026)"
 
   - title: "Worm!"
     developer: "Mark Ball"
+    platform: "Atari 7800"
     kind: game
     status: allocated
     pages:
       start: 0x013
       end: 0x013
+    notes: "https://store.atariage.com/products/worm-atari-7800 (verified August 17, 2026)"
 
   - title: "Indenture"
     developer: "Will Nicholes"
@@ -275,12 +284,14 @@ allocations:
     source_correction: "The AtariAge page labels this game as Super Cobra, when it's actually Super Cobra Arcade"
 
   - title: "Space Game"
-    developer: "kdgarris"
+    developer: "Karl Garrison (kdgarris)"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
       start: 0x026
       end: 0x026
+    notes: "https://store.atariage.com/products/space-game-atari-2600 (verified August 17, 2026)"
 
   - title: "Avalanche"
     developer: "John W. Champeau"
@@ -361,11 +372,13 @@ allocations:
 
   - title: "rubyQ"
     developer: "Silvio Mogno"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
       start: 0x033
       end: 0x033
+    notes: "https://champ.games/store/ols/products/cart-rubyq (verified August 17, 2026)"
 
   - title: "Zoo Keeper"
     developer: "John W. Champeau"
@@ -495,11 +508,13 @@ allocations:
 
   - title: "Stratovox, Lucky Chase, Tomahawk 777"
     developer: "Carlos Centeno"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
       start: 0x051
       end: 0x051
+    notes: "https://champ.games/store/ols/products/cart-stratovox, https://champ.games/store/ols/products/cart-lucky-chase, https://champ.games/store/ols/products/cart-tomahawk-777 (verified August 17, 2026)"
 
   - title: "HappyBird"
     developer: "Bruno STEUX"
@@ -511,11 +526,13 @@ allocations:
 
   - title: "Boom!"
     developer: "Chris Walton"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
       start: 0x053
       end: 0x053
+    notes: "https://champ.games/store/ols/products/cart-boom (verified August 17, 2026)"
       
   - title: "Bot & Tom"
     developer: "Thomas Jentzsch"
@@ -529,11 +546,13 @@ allocations:
 
   - title: "Squish 'Em Deluxe"
     developer: "Bob Montgomery"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
       start: 0x057
       end: 0x057
+    notes: "https://champ.games/store/ols/products/cart-squish-em-deluxe (verified August 17, 2026)"
       
   - title: "Tutankham Arcade"
     developer: "Champ Games"
@@ -547,11 +566,13 @@ allocations:
 
   - title: "Spiders Arcade"
     developer: "Champ Games"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
       start: 0x05A
       end: 0x05B
+    notes: https://champ.games/store/ols/products/cart-spiders-arcade (verified August 17, 2026)"
 
   - title: "Rip Off"
     developer: "Champ Games"
@@ -571,11 +592,13 @@ allocations:
 
   - title: "Chaotic Grill"
     developer: "Philip Blackman"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
       start: 0x060
       end: 0x061
+    notes: "https://champ.games/store/ols/products/cart-chaotic-grill (verified August 17, 2026)"
       
   - title: "T-Rex Runner"
     developer: "Fernando Rodrigues Salvio"
@@ -587,11 +610,13 @@ allocations:
   
   - title: "GridLock"
     developer: "Andrew Davie"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
       start: 0x063
       end: 0x063
+    notes: "https://champ.games/store/ols/products/cart-gridlock (verified August 17, 2026)"
       
   - title: "Zaxxon Arcade"
     developer: "Champ Games"
