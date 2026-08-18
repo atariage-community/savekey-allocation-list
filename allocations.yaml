@@ -306,7 +306,7 @@ allocations:
     verified: "2026-08-17"
 
   - title: "Anguna"
-    developer: " Nathan Tolbert (gauauu)"
+    developer: "Nathan Tolbert (gauauu)"
     platform: "Atari 2600"
     kind: game
     status: allocated
@@ -741,7 +741,7 @@ allocations:
       end: 0x056
     urls:
       - "https://store.atariage.com/products/bot-tom-acari-2600-pre-order"
-    notes: "All 192 bytes used"  
+    notes: "All 192 bytes used"
     verified: "2026-08-18"
 
   - title: "Squish 'Em Deluxe"

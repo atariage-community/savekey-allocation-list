@@ -1,22 +1,16 @@
 # SaveKey Allocation List
 
-Community-maintained SaveKey/AtariVox memory allocation registry for Atari 2600 and compatible projects.
-
-The goal is to provide one easy-to-review place where developers can reserve persistent-storage pages without accidentally colliding with another game.
+Community-maintained SaveKey/AtariVox memory allocation registry for Atari 2600 and compatible projects. Use it to reserve persistent-storage pages without colliding with other projects.
 
 > This is a community-maintained project under `atariage-community`. It is not an official AtariAge repository.
 
 ## The canonical file
 
-**[`allocations.yaml`](allocations.yaml) is the single source of truth.**
-
-All allocation data is maintained in this file.
+**[`allocations.yaml`](allocations.yaml) is the single source of truth.** The web interface reads it directly; no generated allocation list needs to be kept in sync.
 
 For a human-friendly view of the current allocation map, including a visual memory map, search and filtering, see:
 
 https://atariage-community.github.io/savekey-allocation-list/allocations.html
-
-The web interface reads the allocation data directly from `allocations.yaml`, so there is no separate generated allocation list that needs to be kept in sync.
 
 The registry uses **64-byte pages**. By default, address ranges are derived from the page numbers:
 
@@ -34,7 +28,7 @@ and must fall within, and cover the same page or pages as, the `pages` range.
 
 ## Adding or changing an allocation
 
-For most developers, the workflow is:
+To add or change an allocation:
 
 1. Fork this repository to your own GitHub account.
 2. Create a branch in your fork.
@@ -44,10 +38,9 @@ For most developers, the workflow is:
    python -m pip install -r requirements.txt
    python tools/validate.py allocations.yaml
    ```
-5. Commit and push your changes.
-6. Open a pull request back to the `main` branch of this repository.
+5. Commit, push, and open a pull request against this repository's `main` branch.
 
-You **do not need Python installed locally** to contribute. GitHub Actions automatically validates every pull request. If you already have Python installed, running the validator locally is optional but recommended. It can catch problems, such as invalid or overlapping page ranges, before you push your changes.
+GitHub Actions validates every pull request. Local validation is optional, but can catch invalid or overlapping ranges before you push.
 
 Before choosing a new range, it is still a good idea to check the current allocation map and any open pull requests to see what is already in use or being requested.
 
@@ -60,7 +53,7 @@ Example allocation:
     status: reserved
     pages:
       start: 0x104
-      end: 0x105
+      end: 0x104
     urls:
       - "https://example.com/my-new-game"
     verified: "2026-08-17"
