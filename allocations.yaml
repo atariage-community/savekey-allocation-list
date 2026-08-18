@@ -308,7 +308,8 @@ allocations:
       end: 0x08C2
     urls:
       - "https://store.atariage.com/products/amoeba-jump-atari-2600"
-    verified: "2026-08-17"
+      - "https://forums.atariage.com/topic/280211-amoeba-jump/"
+    verified: "2026-08-18"
 
   - title: "Tower of Rubble"
     developer: "Dion Olsthoorn"
@@ -321,6 +322,10 @@ allocations:
     addresses:
       start: 0x08D0
       end: 0x08D4
+    urls:
+      - "https://store.atariage.com/products/tower-of-rubble-atari-2600"
+      - "https://forums.atariage.com/topic/286275-tower-of-rubble-2600-dionoid/"
+    verified: "2026-08-18"
 
   - title: "Lode Runner"
     developer: "Dion Olsthoorn"
@@ -333,6 +338,10 @@ allocations:
     addresses:
       start: 0x08E0
       end: 0x08E7
+    urls:
+      - "https://store.atariage.com/products/lode-runner-atari-2600"
+      - "https://forums.atariage.com/topic/339630-lode-runner%E2%84%A2-for-atari-2600/"
+    verified: "2026-08-18"
 
   - title: "Super Cobra Arcade"
     developer: "John W. Champeau"
