@@ -607,7 +607,7 @@ allocations:
       start: 0x050
       end: 0x050
 
-  - title: "Stratovox, Lucky Chase, Tomahawk 777"
+  - title: "Stratovox"
     developer: "Carlos Centeno"
     platform: "Atari 2600"
     kind: game
@@ -615,11 +615,45 @@ allocations:
     pages:
       start: 0x051
       end: 0x051
+    addresses:
+      start: 0x1440
+      end: 0x144F
     urls:
       - "https://champ.games/store/ols/products/cart-stratovox"
+    verified: "2026-08-17"
+    notes: "Assumed 16-byte high-score allocation."
+
+  - title: "Lucky Chase"
+    developer: "Carlos Centeno"
+    platform: "Atari 2600"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x051
+      end: 0x051
+    addresses:
+      start: 0x1450
+      end: 0x145F
+    urls:
       - "https://champ.games/store/ols/products/cart-lucky-chase"
+    verified: "2026-08-17"
+    notes: "Assumed 16-byte high-score allocation."
+
+  - title: "Tomahawk 777"
+    developer: "Carlos Centeno"
+    platform: "Atari 2600"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x051
+      end: 0x051
+    addresses:
+      start: 0x1460
+      end: 0x146F
+    urls:
       - "https://champ.games/store/ols/products/cart-tomahawk-777"
     verified: "2026-08-17"
+    notes: "Assumed 16-byte high-score allocation."
 
   - title: "HappyBird"
     developer: "Bruno STEUX"

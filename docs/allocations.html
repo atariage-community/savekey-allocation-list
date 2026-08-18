@@ -1234,9 +1234,13 @@ function filterAllocations() {
     }
 
     if (query) {
-      const pageHexMatch = `0x${toHex(item.pages.start, 3)}`.toLowerCase().includes(query) ||
-                           `0x${toHex(item.pages.end, 3)}`.toLowerCase().includes(query) ||
-                           toHex(item.pages.start, 2).toLowerCase().includes(query);
+      const exactPageQuery = query.match(/^0x([0-9a-f]{3})$/);
+      const exactPage = exactPageQuery ? Number.parseInt(exactPageQuery[1], 16) : null;
+      const pageHexMatch = exactPage !== null
+        ? exactPage >= item.pages.start && exactPage <= item.pages.end
+        : `0x${toHex(item.pages.start, 3)}`.toLowerCase().includes(query) ||
+          `0x${toHex(item.pages.end, 3)}`.toLowerCase().includes(query) ||
+          toHex(item.pages.start, 2).toLowerCase().includes(query);
       const titleMatch = item.title.toLowerCase().includes(query);
       const devMatch = item.developer.toLowerCase().includes(query);
       const addrMatch = item.addressRange.toLowerCase().includes(query);
