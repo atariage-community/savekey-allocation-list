@@ -6,9 +6,9 @@ Community-maintained SaveKey/AtariVox memory allocation registry for Atari 2600 
 
 ## The canonical file
 
-**[`allocations.yaml`](allocations.yaml) is the single source of truth.** The web interface reads it directly; no generated allocation list needs to be kept in sync.
+**[`allocations.yaml`](allocations.yaml) is the single source of truth.**
 
-For a human-friendly view of the current allocation map, including a visual memory map, search and filtering, see:
+For a human-friendly view that reads `allocations.yaml` directly and provides a visual memory map, search and filtering, see:
 
 https://atariage-community.github.io/savekey-allocation-list/allocations.html
 
@@ -84,7 +84,7 @@ Please keep the schema simple. If a new field seems useful, discuss it in an iss
 Shared-page allocations are represented as separate entries. For example:
 
 ```yaml
-  - title: "Small Save"
+  - title: "My Other Game"
     developer: "Your Name"
     kind: game
     status: allocated
@@ -134,8 +134,6 @@ tools/
 .github/workflows/
   validate.yml                # automatic validation for pull requests
 ```
-
-There is intentionally no generated `ALLOCATIONS.md`. The YAML file is the authoritative data source, while the GitHub Pages interface provides the human-readable view.
 
 ## Imported source
 
