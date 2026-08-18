@@ -207,7 +207,7 @@ allocations:
       end: 0x0617    
     addresses:
       start: 0x061E
-      end: 0x0617    
+      end: 0x0626    
     addresses:
       start: 0x062D
       end: 0x0635    
