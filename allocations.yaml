@@ -852,6 +852,16 @@ allocations:
       start: 0x068
       end: 0x06B
 
+  - title: "I,EYE"
+    developer: "VIRUS GAMES. LLC:"
+    platform: "Atari 7800"
+    kind: game
+    status: reserved
+    pages:
+      start: 0x06C
+      end: 0x06E
+    notes: "Slot reserved August 18, 2026.  Game in development."
+
   - title: "Get Lost"
     developer: "John K. Harvey"
     platform: "Atari 7800"
