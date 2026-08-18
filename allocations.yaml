@@ -25,6 +25,7 @@ allocations:
 
   - title: "Man Goes Down"
     developer: "Alex Herbert"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
