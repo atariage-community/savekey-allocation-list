@@ -583,6 +583,7 @@ allocations:
     urls:
       - "https://store.atariage.com/products/grizzards-atari-2600"
     verified: "2026-08-17"
+    notes: "Data corruption risk: saving to slot 3 was observed writing to 0x1300-0x13E3, beyond the allocated range and potentially overwriting Elevator Agent and Minigun Miner SaveKey data."
 
   - title: "Elevator Agent"
     developer: "John W. Champeau"
