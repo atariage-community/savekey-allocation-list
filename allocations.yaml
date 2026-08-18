@@ -492,6 +492,9 @@ allocations:
     pages:
       start: 0x033
       end: 0x033
+    pages:
+      start: 0x033
+      end: 0x033
     urls:
       - "https://champ.games/store/ols/products/cart-rubyq"
     verified: "2026-08-17"
@@ -506,7 +509,7 @@ allocations:
       end: 0x035
     urls:
       - "https://champ.games/store/ols/products/cart-zoo-keeper"
-    verified: "2026-08-17"
+    verified: "2026-08-17
 
   - title: "RobotWar:2684"
     developer: "John W. Champeau"
