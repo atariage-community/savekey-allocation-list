@@ -21,15 +21,23 @@
       --text-secondary: #8b9bb4;
       --text-muted: #57657a;
 
-      /* Atari-inspired phosphor color accents */
-      --color-system: #ff9f1c;
-      --color-game-2600: #00f0ff;
-      --color-game-7800: #e056fd;
-      --color-scratchpad: #ffd166;
-      --color-utility: #06d6a0;
-      --color-free: #2a384e;
+      /* Base category fills */
+      --color-system: #8a4b00;
+      --color-game-2600: #005f73;
+      --color-game-7800: #5c1d80;
+      --color-scratchpad: #7a5c00;
+      --color-utility: #005f43;
+      --color-free: #111722;
       --color-free-text: #64748b;
       --color-accent: #ff4757;
+
+      /* Bold, high-luminance phosphor rim colors */
+      --rim-system: #ffaa00;
+      --rim-game-2600: #00ffff;
+      --rim-game-7800: #f368e0;
+      --rim-scratchpad: #ffd166;
+      --rim-utility: #00ff9f;
+      --rim-free: #2b384e;
 
       --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       --font-mono: "SF Mono", "Cascadia Code", "Fira Code", Menlo, Monaco, Consolas, monospace;
@@ -89,9 +97,9 @@
       text-transform: uppercase;
       padding: 3px 8px;
       border-radius: 9999px;
-      background: rgba(6, 214, 160, 0.15);
-      color: var(--color-utility);
-      border: 1px solid rgba(6, 214, 160, 0.3);
+      background: rgba(0, 255, 159, 0.15);
+      color: var(--rim-utility);
+      border: 1px solid rgba(0, 255, 159, 0.3);
       font-family: var(--font-mono);
     }
 
@@ -100,8 +108,8 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--color-utility);
-      box-shadow: 0 0 8px var(--color-utility);
+      background: var(--rim-utility);
+      box-shadow: 0 0 8px var(--rim-utility);
     }
 
     .title-area p {
@@ -221,8 +229,8 @@
     }
 
     .legend-dot {
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
       border-radius: 2px;
     }
 
@@ -230,29 +238,32 @@
       position: relative;
     }
 
+    /* Zero-gap grid so contiguous cells fuse into a single continuous block */
     .memory-grid {
       display: grid;
       grid-template-columns: repeat(32, 1fr);
-      gap: 2px;
-      background: var(--bg-base);
-      padding: 6px;
-      border-radius: 6px;
+      gap: 0;
+      background: #06090e;
+      padding: 10px;
+      border-radius: 8px;
       border: 1px solid var(--border-subtle);
     }
 
+    /* Individual Memory Block */
     .mem-block {
       aspect-ratio: 1;
-      border-radius: 1px;
       cursor: pointer;
-      transition: transform 0.1s ease, filter 0.1s ease;
+      transition: transform 0.12s ease, filter 0.12s ease, box-shadow 0.12s ease;
       position: relative;
+      box-sizing: border-box;
     }
 
-    .mem-block:hover {
-      transform: scale(1.6);
-      z-index: 10;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-      filter: brightness(1.3);
+    /* Coordinated Group Hover */
+    .mem-block.highlight-active {
+      transform: scale(1.25);
+      z-index: 25;
+      filter: brightness(1.45) saturate(1.3);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
     }
 
     /* Tooltip */
@@ -260,19 +271,19 @@
       position: absolute;
       display: none;
       z-index: 1000;
-      background: #0f172a;
-      border: 1px solid var(--color-game-2600);
+      background: #0d1527;
+      border: 1px solid var(--rim-game-2600);
       color: #fff;
       padding: 8px 12px;
       border-radius: 6px;
       font-size: 0.75rem;
       pointer-events: none;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85);
       font-family: var(--font-mono);
-      max-width: 260px;
+      max-width: 280px;
     }
 
-    /* Filter Toolbar */
+    /* Toolbar: Search & Filters */
     .toolbar {
       display: flex;
       flex-wrap: wrap;
@@ -285,7 +296,6 @@
     .search-box {
       flex: 1;
       min-width: 260px;
-      position: relative;
     }
 
     .search-input {
@@ -302,8 +312,8 @@
     }
 
     .search-input:focus {
-      border-color: var(--color-game-2600);
-      box-shadow: 0 0 0 1px var(--color-game-2600);
+      border-color: var(--rim-game-2600);
+      box-shadow: 0 0 0 1px var(--rim-game-2600);
     }
 
     .filter-group {
@@ -325,7 +335,7 @@
     }
 
     .select-control:focus {
-      border-color: var(--color-game-2600);
+      border-color: var(--rim-game-2600);
     }
 
     /* Table */
@@ -359,14 +369,19 @@
       padding: 12px 16px;
       border-bottom: 1px solid var(--border-subtle);
       vertical-align: middle;
+      transition: background-color 0.12s ease;
     }
 
     tr:last-child td {
       border-bottom: none;
     }
 
-    tr:hover td {
-      background: rgba(255, 255, 255, 0.02);
+    tr:hover td, tr.row-highlight td {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    tr.row-highlight td {
+      border-left: 3px solid var(--rim-game-2600);
     }
 
     .code-cell {
@@ -393,7 +408,7 @@
       color: var(--text-secondary);
     }
 
-    /* Kind Tag Badges */
+    /* Category Badges */
     .tag {
       display: inline-block;
       padding: 2px 8px;
@@ -405,33 +420,33 @@
     }
 
     .tag-game-2600 {
-      background: rgba(0, 240, 255, 0.1);
-      color: var(--color-game-2600);
-      border: 1px solid rgba(0, 240, 255, 0.3);
+      background: rgba(0, 255, 255, 0.1);
+      color: var(--rim-game-2600);
+      border: 1px solid rgba(0, 255, 255, 0.3);
     }
 
     .tag-game-7800 {
-      background: rgba(224, 86, 253, 0.1);
-      color: var(--color-game-7800);
-      border: 1px solid rgba(224, 86, 253, 0.3);
+      background: rgba(243, 104, 224, 0.1);
+      color: var(--rim-game-7800);
+      border: 1px solid rgba(243, 104, 224, 0.3);
     }
 
     .tag-system {
-      background: rgba(255, 159, 28, 0.1);
-      color: var(--color-system);
-      border: 1px solid rgba(255, 159, 28, 0.3);
+      background: rgba(255, 170, 0, 0.1);
+      color: var(--rim-system);
+      border: 1px solid rgba(255, 170, 0, 0.3);
     }
 
     .tag-scratchpad {
       background: rgba(255, 209, 102, 0.1);
-      color: var(--color-scratchpad);
+      color: var(--rim-scratchpad);
       border: 1px solid rgba(255, 209, 102, 0.3);
     }
 
     .tag-utility {
-      background: rgba(6, 214, 160, 0.1);
-      color: var(--color-utility);
-      border: 1px solid rgba(6, 214, 160, 0.3);
+      background: rgba(0, 255, 159, 0.1);
+      color: var(--rim-utility);
+      border: 1px solid rgba(0, 255, 159, 0.3);
     }
 
     .tag-free {
@@ -535,7 +550,7 @@
       padding: 12px;
       font-family: var(--font-mono);
       font-size: 0.8rem;
-      color: var(--color-game-2600);
+      color: var(--rim-game-2600);
       white-space: pre;
       overflow-x: auto;
       margin-top: 12px;
@@ -559,7 +574,7 @@
       text-decoration: none;
     }
     footer a:hover {
-      color: var(--color-game-2600);
+      color: var(--rim-game-2600);
       text-decoration: underline;
     }
 
@@ -610,7 +625,7 @@
     Loading memory registry from GitHub...
   </div>
 
-  <!-- Main Content (rendered once data arrives) -->
+  <!-- Main Content Area -->
   <div id="main-content" style="display: none;">
     <!-- Stats Bar -->
     <section class="stats-bar">
@@ -638,22 +653,22 @@
         <div class="visualizer-title">512-Page EEPROM Visual Map ($000 &ndash; $1FF)</div>
         <div class="legend">
           <div class="legend-item">
-            <span class="legend-dot" style="background: var(--color-system);"></span> System
+            <span class="legend-dot" style="background: var(--rim-system); border: 1px solid #fff;"></span> System
           </div>
           <div class="legend-item">
-            <span class="legend-dot" style="background: var(--color-game-2600);"></span> 2600 Game
+            <span class="legend-dot" style="background: var(--rim-game-2600); border: 1px solid #fff;"></span> 2600 Game
           </div>
           <div class="legend-item">
-            <span class="legend-dot" style="background: var(--color-game-7800);"></span> 7800 Game
+            <span class="legend-dot" style="background: var(--rim-game-7800); border: 1px solid #fff;"></span> 7800 Game
           </div>
           <div class="legend-item">
-            <span class="legend-dot" style="background: var(--color-utility);"></span> Utility
+            <span class="legend-dot" style="background: var(--rim-utility); border: 1px solid #fff;"></span> Utility
           </div>
           <div class="legend-item">
-            <span class="legend-dot" style="background: var(--color-scratchpad);"></span> Scratchpad
+            <span class="legend-dot" style="background: var(--rim-scratchpad); border: 1px solid #fff;"></span> Scratchpad
           </div>
           <div class="legend-item">
-            <span class="legend-dot" style="background: var(--color-free);"></span> Unallocated
+            <span class="legend-dot" style="background: var(--color-free); border: 1px solid var(--rim-free);"></span> Unallocated
           </div>
         </div>
       </div>
@@ -710,7 +725,7 @@
           </tr>
         </thead>
         <tbody id="table-body">
-          <!-- Populated by JS -->
+          <!-- Populated by JavaScript -->
         </tbody>
       </table>
     </div>
@@ -787,19 +802,22 @@
 <script>
 /**
  * SaveKey & AtariVox Registry Browser Application
- * Pure Vanilla JS + js-yaml for single-file deployment
+ * Bold 2.5px perimeter borders with zero-gap block fusion and bidirectional group hover synchronization.
  */
 
 const GITHUB_YAML_URL = "https://raw.githubusercontent.com/atariage-community/savekey-allocation-list/refs/heads/main/allocations.yaml";
 const DEFAULT_PAGE_SIZE = 64;
 const DEFAULT_TOTAL_PAGES = 512;
+const GRID_COLUMNS = 32;
+const BORDER_WIDTH_PX = "2.5px";
+const CORNER_RADIUS_PX = "4px";
 
 // Master state
 let registryMetadata = null;
-let unifiedAllocations = []; // includes both explicit allocations and synthesized "unallocated" slots
-let pageToAllocMap = new Map(); // pageIndex (0..511) -> allocation item
+let unifiedAllocations = [];
+let pageToAllocMap = new Map(); // pageIndex (0..511) -> allocation object
 
-// Format helpers
+// Formatting helpers
 function toHex(val, padding = 2) {
   return val.toString(16).toUpperCase().padStart(padding, "0");
 }
@@ -822,7 +840,7 @@ function calculateAddressRange(startPage, endPage, pageSize) {
 }
 
 /**
- * Normalizes YAML raw entries and detects all unallocated page holes
+ * Parses raw YAML and builds normalized list with synthesized unallocated gaps
  */
 function processAllocations(rawYaml) {
   const pageSize = rawYaml.page_size || DEFAULT_PAGE_SIZE;
@@ -830,24 +848,24 @@ function processAllocations(rawYaml) {
   const defaultPlatform = rawYaml.default_platform || "Atari 2600";
 
   const rawAllocations = rawYaml.allocations || [];
-  
-  // Sort allocations by start page
   rawAllocations.sort((a, b) => a.pages.start - b.pages.start);
 
   const processed = [];
   let currentPageTracker = 0;
+  let allocCounter = 0;
 
   for (const item of rawAllocations) {
     const start = item.pages.start;
     const end = item.pages.end;
 
-    // Check if there is an unallocated gap before this item
+    // Detect unallocated gap before this item
     if (start > currentPageTracker) {
       const freeStart = currentPageTracker;
       const freeEnd = start - 1;
       const freeCount = freeEnd - freeStart + 1;
       
       processed.push({
+        id: `alloc-free-${allocCounter++}`,
         title: "[ Available / Unallocated ]",
         developer: "",
         platform: defaultPlatform,
@@ -864,6 +882,7 @@ function processAllocations(rawYaml) {
 
     const count = end - start + 1;
     processed.push({
+      id: `alloc-${allocCounter++}`,
       title: item.title,
       developer: item.developer || "",
       platform: item.platform || defaultPlatform,
@@ -881,13 +900,14 @@ function processAllocations(rawYaml) {
     currentPageTracker = Math.max(currentPageTracker, end + 1);
   }
 
-  // Trailing free space up to totalPages
+  // Trailing free space up to total capacity
   if (currentPageTracker < totalPages) {
     const freeStart = currentPageTracker;
     const freeEnd = totalPages - 1;
     const freeCount = freeEnd - freeStart + 1;
 
     processed.push({
+      id: `alloc-free-${allocCounter++}`,
       title: "[ Available / Unallocated ]",
       developer: "",
       platform: defaultPlatform,
@@ -902,7 +922,7 @@ function processAllocations(rawYaml) {
     });
   }
 
-  // Populate quick lookup map
+  // Populate quick page lookup map
   pageToAllocMap.clear();
   for (const item of processed) {
     for (let p = item.pages.start; p <= item.pages.end; p++) {
@@ -945,13 +965,13 @@ async function initApp() {
     errorBanner.style.display = "block";
     errorBanner.innerHTML = `
       <strong>Error loading remote allocation list:</strong> ${err.message}<br>
-      <small style="color: var(--text-muted);">Ensure internet connectivity or check the GitHub URL repository status.</small>
+      <small style="color: var(--text-muted);">Ensure internet connectivity or check the GitHub repository status.</small>
     `;
   }
 }
 
 /**
- * Computes and renders top statistics bar
+ * Top statistics bar calculations
  */
 function renderStats() {
   const totalPages = registryMetadata.total_pages || DEFAULT_TOTAL_PAGES;
@@ -974,9 +994,9 @@ function renderStats() {
 }
 
 /**
- * Returns the CSS color for a given item kind and platform
+ * Returns base background fill color for an allocation
  */
-function getItemColor(item) {
+function getItemBaseColor(item) {
   if (!item || item.kind === "unallocated") return "var(--color-free)";
   if (item.kind === "system") return "var(--color-system)";
   if (item.kind === "scratchpad") return "var(--color-scratchpad)";
@@ -986,7 +1006,63 @@ function getItemColor(item) {
 }
 
 /**
- * Builds the 512-cell interactive micro grid
+ * Returns the bold illuminated lighter rim color for boundary highlighting
+ */
+function getItemRimColor(item) {
+  if (!item || item.kind === "unallocated") return "var(--rim-free)";
+  if (item.kind === "system") return "var(--rim-system)";
+  if (item.kind === "scratchpad") return "var(--rim-scratchpad)";
+  if (item.kind === "utility") return "var(--rim-utility)";
+  if (item.platform === "Atari 7800") return "var(--rim-game-7800)";
+  return "var(--rim-game-2600)";
+}
+
+/**
+ * 2D Cellular Topology Boundary Engine
+ * Calculates N, S, E, W borders and corner radii based on adjacent page allocation ownership
+ */
+function computeCellBoundaries(pageIndex, totalPages) {
+  const col = pageIndex % GRID_COLUMNS;
+  const row = Math.floor(pageIndex / GRID_COLUMNS);
+  const totalRows = Math.ceil(totalPages / GRID_COLUMNS);
+  
+  const currentItem = pageToAllocMap.get(pageIndex);
+  const currentId = currentItem ? currentItem.id : null;
+
+  // West neighbor
+  const westIndex = pageIndex - 1;
+  const westItem = (col > 0 && westIndex >= 0) ? pageToAllocMap.get(westIndex) : null;
+  const borderWest = (col === 0) || !westItem || (westItem.id !== currentId);
+
+  // East neighbor
+  const eastIndex = pageIndex + 1;
+  const eastItem = (col < GRID_COLUMNS - 1 && eastIndex < totalPages) ? pageToAllocMap.get(eastIndex) : null;
+  const borderEast = (col === GRID_COLUMNS - 1) || !eastItem || (eastItem.id !== currentId);
+
+  // North neighbor
+  const northIndex = pageIndex - GRID_COLUMNS;
+  const northItem = (row > 0 && northIndex >= 0) ? pageToAllocMap.get(northIndex) : null;
+  const borderNorth = (row === 0) || !northItem || (northItem.id !== currentId);
+
+  // South neighbor
+  const southIndex = pageIndex + GRID_COLUMNS;
+  const southItem = (row < totalRows - 1 && southIndex < totalPages) ? pageToAllocMap.get(southIndex) : null;
+  const borderSouth = (row === totalRows - 1) || !southItem || (southItem.id !== currentId);
+
+  return {
+    borderNorth,
+    borderSouth,
+    borderEast,
+    borderWest,
+    radiusTopLeft: borderNorth && borderWest,
+    radiusTopRight: borderNorth && borderEast,
+    radiusBottomLeft: borderSouth && borderWest,
+    radiusBottomRight: borderSouth && borderEast
+  };
+}
+
+/**
+ * Builds the 512-cell interactive visual map with continuous bold run outlines
  */
 function renderMemoryVisualizer() {
   const gridEl = document.getElementById("memory-grid");
@@ -998,35 +1074,57 @@ function renderMemoryVisualizer() {
     const item = pageToAllocMap.get(p);
     const block = document.createElement("div");
     block.className = "mem-block";
-    block.style.backgroundColor = getItemColor(item);
     block.dataset.page = p;
+    block.dataset.allocId = item ? item.id : "";
 
+    const baseColor = getItemBaseColor(item);
+    const rimColor = getItemRimColor(item);
+    const bounds = computeCellBoundaries(p, totalPages);
+
+    block.style.backgroundColor = baseColor;
+
+    // Apply thick 2.5px borders conditionally on exposed perimeter edges
+    block.style.borderTop = bounds.borderNorth ? `${BORDER_WIDTH_PX} solid ${rimColor}` : "none";
+    block.style.borderBottom = bounds.borderSouth ? `${BORDER_WIDTH_PX} solid ${rimColor}` : "none";
+    block.style.borderLeft = bounds.borderWest ? `${BORDER_WIDTH_PX} solid ${rimColor}` : "none";
+    block.style.borderRight = bounds.borderEast ? `${BORDER_WIDTH_PX} solid ${rimColor}` : "none";
+
+    // Corner filleting
+    block.style.borderTopLeftRadius = bounds.radiusTopLeft ? CORNER_RADIUS_PX : "0";
+    block.style.borderTopRightRadius = bounds.radiusTopRight ? CORNER_RADIUS_PX : "0";
+    block.style.borderBottomLeftRadius = bounds.radiusBottomLeft ? CORNER_RADIUS_PX : "0";
+    block.style.borderBottomRightRadius = bounds.radiusBottomRight ? CORNER_RADIUS_PX : "0";
+
+    // Mouse Interaction
     block.addEventListener("mouseenter", (e) => {
+      setGroupHover(item ? item.id : null, true);
+
       const pageHex = "0x" + toHex(p, 3);
       const addrStart = toHex(p * 64, 4);
       const addrEnd = toHex((p + 1) * 64 - 1, 4);
       
       tooltip.innerHTML = `
-        <div style="font-weight:700; color:${getItemColor(item)};">${item ? item.title : "Free"}</div>
+        <div style="font-weight:700; color:${rimColor};">${item ? item.title : "Free"}</div>
         <div style="margin-top:4px;">Page: <strong>${pageHex}</strong> (dec ${p})</div>
         <div>Addr: <strong>${addrStart} - ${addrEnd}</strong></div>
         ${item && item.developer ? `<div>Author: ${item.developer}</div>` : ""}
         ${item ? `<div style="font-size:0.7rem; color:#94a3b8; margin-top:2px;">Type: ${item.kind.toUpperCase()} (${item.platform})</div>` : ""}
+        ${item && item.pageCount > 1 ? `<div style="font-size:0.7rem; color:#60a5fa; margin-top:2px;">Span: ${item.pageCount} contiguous pages (${item.byteCount} bytes)</div>` : ""}
       `;
       tooltip.style.display = "block";
     });
 
     block.addEventListener("mousemove", (e) => {
-      tooltip.style.left = (e.pageX + 12) + "px";
-      tooltip.style.top = (e.pageY + 12) + "px";
+      tooltip.style.left = (e.pageX + 14) + "px";
+      tooltip.style.top = (e.pageY + 14) + "px";
     });
 
     block.addEventListener("mouseleave", () => {
+      setGroupHover(item ? item.id : null, false);
       tooltip.style.display = "none";
     });
 
     block.addEventListener("click", () => {
-      // Highlight/search by this page
       const searchBox = document.getElementById("search-input");
       searchBox.value = "0x" + toHex(p, 3);
       handleSearchFilterChange();
@@ -1038,7 +1136,32 @@ function renderMemoryVisualizer() {
 }
 
 /**
- * Filter & Search Engine
+ * Synchronizes hover highlight across all blocks of a multi-page allocation and the table row
+ */
+function setGroupHover(allocId, isActive) {
+  if (!allocId) return;
+
+  const blocks = document.querySelectorAll(`.mem-block[data-alloc-id="${allocId}"]`);
+  blocks.forEach(b => {
+    if (isActive) {
+      b.classList.add("highlight-active");
+    } else {
+      b.classList.remove("highlight-active");
+    }
+  });
+
+  const row = document.getElementById(`row-${allocId}`);
+  if (row) {
+    if (isActive) {
+      row.classList.add("row-highlight");
+    } else {
+      row.classList.remove("row-highlight");
+    }
+  }
+}
+
+/**
+ * Filter Engine
  */
 function filterAllocations() {
   const query = (document.getElementById("search-input").value || "").trim().toLowerCase();
@@ -1047,21 +1170,17 @@ function filterAllocations() {
   const freeToggle = document.getElementById("free-toggle").value;
 
   return unifiedAllocations.filter(item => {
-    // Free space toggle
     if (freeToggle === "hide" && item.kind === "unallocated") return false;
     if (freeToggle === "only" && item.kind !== "unallocated") return false;
 
-    // Platform filter
     if (platformFilter !== "ALL" && item.platform !== platformFilter && item.kind !== "unallocated") {
       return false;
     }
 
-    // Kind filter
     if (kindFilter !== "ALL" && item.kind !== kindFilter) {
       return false;
     }
 
-    // Search query
     if (query) {
       const pageHexMatch = `0x${toHex(item.pages.start, 3)}`.toLowerCase().includes(query) ||
                            `0x${toHex(item.pages.end, 3)}`.toLowerCase().includes(query) ||
@@ -1079,7 +1198,7 @@ function filterAllocations() {
 }
 
 /**
- * Renders the table body based on filtered results
+ * Renders the table body
  */
 function renderTable() {
   const tbody = document.getElementById("table-body");
@@ -1106,7 +1225,12 @@ function renderTable() {
     else if (isFree) tagClass = "tag-free";
 
     return `
-      <tr class="${isFree ? 'row-free' : ''}">
+      <tr 
+        id="row-${item.id}" 
+        class="${isFree ? 'row-free' : ''}"
+        onmouseenter="setGroupHover('${item.id}', true)" 
+        onmouseleave="setGroupHover('${item.id}', false)"
+      >
         <td class="code-cell">
           <span class="page-num">${item.pageRangeFormatted}</span>
           <span style="color:var(--text-muted); font-size:0.75rem; margin-left:4px;">($${toHex(item.pages.start, 3)}${item.pages.start !== item.pages.end ? '..$' + toHex(item.pages.end, 3) : ''})</span>
