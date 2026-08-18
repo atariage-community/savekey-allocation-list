@@ -202,6 +202,30 @@ allocations:
     pages:
       start: 0x018
       end: 0x018
+    addresses:
+      start: 0x0600
+      end: 0x0617    
+    addresses:
+      start: 0x061E
+      end: 0x0617    
+    addresses:
+      start: 0x062D
+      end: 0x0635    
+    verified: "2026-08-18"
+
+  - title: "Three·s"
+    developer: "Thomas Jentzsch"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x018
+      end: 0x018
+    addresses:
+      start: 0x0618
+      end: 0x061A     
+    urls:
+      - "https://store.atariage.com/products/threemiddots-atari-2600"
+    verified: "2026-08-18"
 
   - title: "Gate Racer"
     developer: "Steve Engelhardt"
@@ -392,16 +416,19 @@ allocations:
     verified: "2026-08-17"
 
   - title: "Aardvark"
-    developer: "Oscar Toledo Gutiérrez"
+    developer: "Oscar Toledo Gutiérrez & Thomas Jentzsch"
     platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
       start: 0x02A
       end: 0x02A
+    addresses:
+      start: 0x0A80
+      end: 0x0AA9   
     urls:
       - "https://store.atariage.com/products/aardvark-atari-2600"
-    verified: "2026-08-17"
+    verified: "2026-08-18"
 
   - title: "VROOM!"
     developer: "Thomas Jentzsch"
@@ -411,9 +438,12 @@ allocations:
     pages:
       start: 0x02B
       end: 0x02B
+    addresses:
+      start: 0x0AC0
+      end: 0x0AEF   
     urls:
       - "https://store.atariage.com/products/vroom-atari-2600"
-    verified: "2026-08-17"
+    verified: "2026-08-18"
 
   - title: "Wizard of Wor Arcade"
     developer: "John W. Champeau"
@@ -544,9 +574,27 @@ allocations:
     pages:
       start: 0x040
       end: 0x040
+    addresses:
+      start: 0x1000
+      end: 0x1009          
     urls:
       - "https://store.atariage.com/products/thrust-platinum-atari-2600"
-    verified: "2026-08-17"
+    verified: "2026-08-18
+    
+  - title: "Robot City"
+    developer: "Thomas Jentzsch"
+    platform: "Atari 2600"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x040
+      end: 0x040
+    addresses:
+      start: 0x100A
+      end: 0x101D          
+    urls:
+      - "https://store.atariage.com/products/robot-city-atari-2600"
+    verified: "2026-08-18    
 
   - title: "Berry Fun!"
     developer: "Mike Littau"
@@ -693,9 +741,9 @@ allocations:
       start: 0x054
       end: 0x056
     urls:
-      - "https://store.atariage.com/products/bot-tom-atari-2600-pre-order"
-    verified: "2026-08-17"
-    notes: "Pre-order"
+      - "https://store.atariage.com/products/bot-tom-acari-2600-pre-order"
+    notes: "All 192 bytes used"  
+    verified: "2026-08-18"
 
   - title: "Squish 'Em Deluxe"
     developer: "Bob Montgomery"
