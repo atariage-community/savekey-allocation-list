@@ -28,7 +28,8 @@ This avoids page/address mismatches.
 A developer is normally assigned a complete 64-byte page. Because a game may
 use only part of that page, the assigned developer can document multiple games
 on the same page by declaring each game's exact inclusive
-`addresses.start` / `addresses.end` range. These byte ranges must not overlap
+`addresses.start` / `addresses.end` range. A game with discontiguous storage can
+declare `addresses` as a list of these ranges. Address ranges must not overlap
 and must fall within, and cover the same page or pages as, the `pages` range.
 
 ## Adding or changing an allocation
@@ -80,7 +81,7 @@ Each allocation supports:
 - `kind` — `game`, `system`, `scratchpad`, or `utility`
 - `status` — `reserved`, `allocated`, or `retired`
 - `pages.start` / `pages.end` — inclusive hexadecimal page range
-- `addresses.start` / `addresses.end` — optional inclusive hexadecimal byte range for a partial-page allocation
+- `addresses` — optional inclusive hexadecimal byte range, or list of ranges, for a partial-page or discontiguous allocation
 - `urls` — optional list of source URLs that verify the allocation or project status
 - `verified` — optional date on which the sources were verified, quoted in ISO `YYYY-MM-DD` format
 - `notes` — optional commentary that is not represented by another field
@@ -103,6 +104,16 @@ Shared-page allocations are represented as separate entries. For example:
 ```
 
 Omit `addresses` when the allocation reserves complete pages.
+
+Use a list when one game has multiple discontiguous ranges:
+
+```yaml
+    addresses:
+      - start: 0x0600
+        end: 0x0617
+      - start: 0x061E
+        end: 0x0626
+```
 
 ## Validation
 
