@@ -60,6 +60,9 @@ Example allocation:
     pages:
       start: 0x104
       end: 0x105
+    urls:
+      - "https://example.com/my-new-game"
+    verified: "2026-08-17"
     notes: "High scores and game settings"
 ```
 
@@ -78,8 +81,9 @@ Each allocation supports:
 - `status` — `reserved`, `allocated`, or `retired`
 - `pages.start` / `pages.end` — inclusive hexadecimal page range
 - `addresses.start` / `addresses.end` — optional inclusive hexadecimal byte range for a partial-page allocation
-- `notes` — optional additional information
-- `source_correction` — optional note documenting normalization/correction of source data
+- `urls` — optional list of source URLs that verify the allocation or project status
+- `verified` — optional date on which the sources were verified, quoted in ISO `YYYY-MM-DD` format
+- `notes` — optional commentary that is not represented by another field
 
 Please keep the schema simple. If a new field seems useful, discuss it in an issue before adding it broadly.
 

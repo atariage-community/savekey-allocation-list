@@ -463,8 +463,21 @@
 
     .note-text {
       font-size: 0.75rem;
+      color: #ffb86c;
+      margin-top: 2px;
+    }
+
+    .source-text {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 8px;
+      font-size: 0.75rem;
       color: var(--text-muted);
       margin-top: 2px;
+    }
+
+    .source-text a {
+      color: var(--rim-game-2600);
     }
 
     /* Modal */
@@ -847,6 +860,16 @@ function formatAddressRange(startAddress, endAddress) {
   return `${toHex(startAddress, 4)} - ${toHex(endAddress, 4)}`;
 }
 
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#039;"
+  })[character]);
+}
+
 /**
  * Parses raw YAML and builds normalized list with synthesized unallocated gaps
  */
@@ -889,6 +912,8 @@ function processAllocations(rawYaml) {
         byteCount: freeCount * pageSize,
         addressRange: calculateAddressRange(freeStart, freeEnd, pageSize),
         pageRangeFormatted: formatPageRange(freeStart, freeEnd),
+        urls: [],
+        verified: "",
         notes: "Unassigned memory space available for reservation."
       });
     }
@@ -909,8 +934,9 @@ function processAllocations(rawYaml) {
       byteCount: addressEnd - addressStart + 1,
       addressRange: formatAddressRange(addressStart, addressEnd),
       pageRangeFormatted: formatPageRange(start, end),
-      notes: item.notes || "",
-      sourceCorrection: item.source_correction || ""
+      urls: Array.isArray(item.urls) ? item.urls : [],
+      verified: item.verified || "",
+      notes: item.notes || ""
     });
 
     currentPageTracker = Math.max(currentPageTracker, end + 1);
@@ -934,6 +960,8 @@ function processAllocations(rawYaml) {
       byteCount: freeCount * pageSize,
       addressRange: calculateAddressRange(freeStart, freeEnd, pageSize),
       pageRangeFormatted: formatPageRange(freeStart, freeEnd),
+      urls: [],
+      verified: "",
       notes: "Unassigned memory space available for reservation."
     });
   }
@@ -1213,8 +1241,10 @@ function filterAllocations() {
       const devMatch = item.developer.toLowerCase().includes(query);
       const addrMatch = item.addressRange.toLowerCase().includes(query);
       const notesMatch = item.notes.toLowerCase().includes(query);
+      const sourceMatch = item.urls.some(url => url.toLowerCase().includes(query)) ||
+              item.verified.toLowerCase().includes(query);
 
-      return pageHexMatch || titleMatch || devMatch || addrMatch || notesMatch;
+      return pageHexMatch || titleMatch || devMatch || addrMatch || notesMatch || sourceMatch;
     }
 
     return true;
@@ -1248,6 +1278,14 @@ function renderTable() {
     else if (item.platform === "Atari 7800") tagClass = "tag-game-7800";
     else if (isFree) tagClass = "tag-free";
 
+    const sourceLinks = item.urls.map((url, index) => {
+      const label = item.urls.length > 1 ? `Source ${index + 1}` : "Source";
+      return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+    }).join("");
+    const sourceMetadata = sourceLinks || item.verified
+      ? `<div class="source-text">${sourceLinks}${item.verified ? `<span>Verified ${escapeHtml(item.verified)}</span>` : ""}</div>`
+      : "";
+
     return `
       <tr 
         id="row-${item.id}" 
@@ -1265,8 +1303,8 @@ function renderTable() {
         <td style="color:var(--text-secondary); font-size:0.8rem;">${item.platform}</td>
         <td class="title-cell">
           ${item.title}
-          ${item.notes ? `<div class="note-text">&bull; ${item.notes}</div>` : ''}
-          ${item.sourceCorrection ? `<div class="note-text" style="color:#ffb86c;">Note: ${item.sourceCorrection}</div>` : ''}
+          ${sourceMetadata}
+          ${item.notes ? `<div class="note-text">Note: ${item.notes}</div>` : ''}
         </td>
         <td class="developer-cell">${item.developer || '&mdash;'}</td>
       </tr>

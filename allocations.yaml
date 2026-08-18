@@ -31,7 +31,10 @@ allocations:
     pages:
       start: 0x001
       end: 0x001
-    notes: "https://forums.atariage.com/topic/53689-my-1st-atari-2600-game-man-goes-down/page/18/ - WIP, never finalized nor published 'officially'. Arguably, should retain its slot due to wide adoption. (reviewed August 17, 2026)"
+    urls:
+      - "https://forums.atariage.com/topic/53689-my-1st-atari-2600-game-man-goes-down/page/18/"
+    verified: "2026-08-17"
+    notes: "WIP, never finalized nor published 'officially'. Arguably, should retain its slot due to wide adoption."
 
   - title: "Fall Down"
     developer: "Aaron Curtis"
@@ -41,7 +44,9 @@ allocations:
     pages:
       start: 0x002
       end: 0x002
-    notes: "https://store.atariage.com/products/fall-down-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/fall-down-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Go Fish!"
     developer: "Bob Montgomery"
@@ -51,7 +56,9 @@ allocations:
     pages:
       start: 0x003
       end: 0x003
-    notes: "https://store.atariage.com/products/go-fish-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/go-fish-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Strat-O-Gems"
     developer: "John Payson"
@@ -86,7 +93,9 @@ allocations:
     pages:
       start: 0x00B
       end: 0x00B
-    notes: "https://store.atariage.com/products/lead-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/lead-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Elevators Amiss"
     developer: "Bob Montgomery"
@@ -96,7 +105,9 @@ allocations:
     pages:
       start: 0x00C
       end: 0x00C
-    notes: "https://store.atariage.com/products/elevators-amiss-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/elevators-amiss-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Juno First"
     developer: "Chris Walton"
@@ -106,7 +117,9 @@ allocations:
     pages:
       start: 0x00D
       end: 0x00D
-    notes: "https://champ.games/store/ols/products/cart-juno-first (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-juno-first"
+    verified: "2026-08-17"
 
   - title: "Karate Master"
     developer: "Greg Kennedy"
@@ -124,7 +137,10 @@ allocations:
     pages:
       start: 0x00F
       end: 0x00F
-    notes: "https://forums.atariage.com/topic/152901-7800-happy-halloween/ (never released on cart, seen at 2010 CGExpo, abandoned? - status as of August 17, 2026)"
+    urls:
+      - "https://forums.atariage.com/topic/152901-7800-happy-halloween/"
+    verified: "2026-08-17"
+    notes: "Never released on cart, seen at 2010 CGExpo, abandoned?"
 
   - title: "Duck Attack!"
     developer: "Will Nicholes"
@@ -134,7 +150,9 @@ allocations:
     pages:
       start: 0x010
       end: 0x011
-    notes: "https://store.atariage.com/products/duck-attack-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/duck-attack-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Monster!"
     developer: "Mark Ball"
@@ -144,7 +162,10 @@ allocations:
     pages:
       start: 0x012
       end: 0x012
-    notes: "https://forums.atariage.com/topic/156877-monster-wip/ (never released on cart, abandoned? - status as of August 17, 2026)"
+    urls:
+      - "https://forums.atariage.com/topic/156877-monster-wip/"
+    verified: "2026-08-17"
+    notes: "Never released on cart, abandoned?"
 
   - title: "Worm!"
     developer: "Mark Ball"
@@ -154,7 +175,9 @@ allocations:
     pages:
       start: 0x013
       end: 0x013
-    notes: "https://store.atariage.com/products/worm-atari-7800 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/worm-atari-7800"
+    verified: "2026-08-17"
 
   - title: "Indenture"
     developer: "Will Nicholes"
@@ -212,7 +235,9 @@ allocations:
     pages:
       start: 0x01C
       end: 0x01C
-    notes: "https://store.atariage.com/products/wall-jump-ninja-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/wall-jump-ninja-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Dr.V.Dalek Berzerk"
     developer: "Michael Haas"
@@ -221,7 +246,6 @@ allocations:
     pages:
       start: 0x01D
       end: 0x01D
-    source_correction: "The AtariAge page labels this row as page 0x01C, but address 0x0740-0x077F corresponds to page 0x01D."
 
   - title: "Scramble"
     developer: "John W. Champeau"
@@ -231,7 +255,9 @@ allocations:
     pages:
       start: 0x01E
       end: 0x01F
-    notes: "https://champ.games/store/ols/products/cart-scramble (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-scramble"
+    verified: "2026-08-17"
 
   - title: "Assembloids"
     developer: "Dr. Martin Wendt"
@@ -241,7 +267,9 @@ allocations:
     pages:
       start: 0x020
       end: 0x020
-    notes: "https://store.atariage.com/products/assembloids-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/assembloids-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Drive!"
     developer: "Lumi"
@@ -251,7 +279,9 @@ allocations:
     pages:
       start: 0x021
       end: 0x021
-    notes: "https://store.atariage.com/products/drive-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/drive-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Anguna"
     developer: " Nathan Tolbert (gauauu)"
@@ -261,7 +291,9 @@ allocations:
     pages:
       start: 0x022
       end: 0x022
-    notes: "https://store.atariage.com/products/anguna-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/anguna-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Amoeba Jump"
     developer: "Dion Olsthoorn"
@@ -274,7 +306,9 @@ allocations:
     addresses:
       start: 0x08C0
       end: 0x08C2
-    notes: "https://store.atariage.com/products/amoeba-jump-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/amoeba-jump-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Tower of Rubble"
     developer: "Dion Olsthoorn"
@@ -308,8 +342,9 @@ allocations:
     pages:
       start: 0x024
       end: 0x025
-    notes: "https://champ.games/store/ols/products/cart-super-cobra-arcade (verified August 17, 2026)"
-    source_correction: "The AtariAge page labels this game as Super Cobra, when it's actually Super Cobra Arcade"
+    urls:
+      - "https://champ.games/store/ols/products/cart-super-cobra-arcade"
+    verified: "2026-08-17"
 
   - title: "Space Game"
     developer: "Karl Garrison (kdgarris)"
@@ -319,7 +354,9 @@ allocations:
     pages:
       start: 0x026
       end: 0x026
-    notes: "https://store.atariage.com/products/space-game-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/space-game-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Avalanche"
     developer: "John W. Champeau"
@@ -329,7 +366,9 @@ allocations:
     pages:
       start: 0x027
       end: 0x027
-    notes: "https://atari.com/products/avalanche-2600 (verified August 17, 2026)"
+    urls:
+      - "https://atari.com/products/avalanche-2600"
+    verified: "2026-08-17"
 
   - title: "Mappy"
     developer: "John W. Champeau"
@@ -339,7 +378,9 @@ allocations:
     pages:
       start: 0x028
       end: 0x029
-    notes: "https://champ.games/store/ols/products/cart-mappy (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-mappy"
+    verified: "2026-08-17"
 
   - title: "Aardvark"
     developer: "Oscar Toledo Gutiérrez"
@@ -349,7 +390,9 @@ allocations:
     pages:
       start: 0x02A
       end: 0x02A
-    notes: "https://store.atariage.com/products/aardvark-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/aardvark-atari-2600"
+    verified: "2026-08-17"
 
   - title: "VROOM!"
     developer: "Thomas Jentzsch"
@@ -359,7 +402,9 @@ allocations:
     pages:
       start: 0x02B
       end: 0x02B
-    notes: "https://store.atariage.com/products/vroom-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/vroom-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Wizard of Wor Arcade"
     developer: "John W. Champeau"
@@ -369,7 +414,9 @@ allocations:
     pages:
       start: 0x02C
       end: 0x02E
-    notes: "https://champ.games/store/ols/products/cart-wizard-of-wor-arcade (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-wizard-of-wor-arcade"
+    verified: "2026-08-17"
 
   - title: "Undisclosed Atari 7800 Project"
     developer: "unknown"
@@ -388,7 +435,9 @@ allocations:
     pages:
       start: 0x030
       end: 0x031
-    notes: "https://champ.games/store/ols/products/cart-galagon (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-galagon"
+    verified: "2026-08-17"
 
   - title: "Tap-A-Mole"
     developer: "quohog"
@@ -406,7 +455,9 @@ allocations:
     pages:
       start: 0x033
       end: 0x033
-    notes: "https://champ.games/store/ols/products/cart-rubyq (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-rubyq"
+    verified: "2026-08-17"
 
   - title: "Zoo Keeper"
     developer: "John W. Champeau"
@@ -416,7 +467,9 @@ allocations:
     pages:
       start: 0x034
       end: 0x035
-    notes: "https://champ.games/store/ols/products/cart-zoo-keeper (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-zoo-keeper"
+    verified: "2026-08-17"
 
   - title: "RobotWar:2684"
     developer: "John W. Champeau"
@@ -426,7 +479,9 @@ allocations:
     pages:
       start: 0x036
       end: 0x037
-    notes: "https://champ.games/store/ols/products/cart-robotwar-2684 (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-robotwar-2684"
+    verified: "2026-08-17"
 
   - title: "Gorf Arcade"
     developer: "John W. Champeau"
@@ -436,8 +491,9 @@ allocations:
     pages:
       start: 0x038
       end: 0x039
-    notes: "https://champ.games/store/ols/products/cart-gorf-arcade (verified August 17, 2026)"
-    source_correction: "The AtariAge page prints the end address for page 0x039 as OE7F; normalized here to 0x0E7F."
+    urls:
+      - "https://champ.games/store/ols/products/cart-gorf-arcade"
+    verified: "2026-08-17"
 
   - title: "QYX"
     developer: "John W. Champeau"
@@ -447,7 +503,9 @@ allocations:
     pages:
       start: 0x03A
       end: 0x03B
-    notes: "https://champ.games/store/ols/products/cart-qyx (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-qyx"
+    verified: "2026-08-17"
 
   - title: "Lady Bug Arcade"
     developer: "John W. Champeau"
@@ -457,7 +515,9 @@ allocations:
     pages:
       start: 0x03C
       end: 0x03E
-    notes: "https://champ.games/store/ols/products/cart-lady-bug-arcade (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-lady-bug-arcade"
+    verified: "2026-08-17"
 
   - title: "Mallard Season"
     developer: "Mallard Season"
@@ -475,7 +535,9 @@ allocations:
     pages:
       start: 0x040
       end: 0x040
-    notes: "https://store.atariage.com/products/thrust-platinum-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/thrust-platinum-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Berry Fun!"
     developer: "Mike Littau"
@@ -484,7 +546,10 @@ allocations:
     pages:
       start: 0x041
       end: 0x041
-    notes: "https://store.atariage.com/products/berry-fun-atari-2600-pre-order (checked August 17, 2026) - Pre-order"
+    urls:
+      - "https://store.atariage.com/products/berry-fun-atari-2600-pre-order"
+    verified: "2026-08-17"
+    notes: "Pre-order"
 
   - title: "Turbo Arcade"
     developer: "John W. Champeau"
@@ -494,7 +559,9 @@ allocations:
     pages:
       start: 0x042
       end: 0x043
-    notes: "https://champ.games/store/ols/products/cart-turbo-arcade (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-turbo-arcade"
+    verified: "2026-08-17"
 
   - title: "Grizzards"
     developer: "Bruce-Robert Pocock"
@@ -504,7 +571,9 @@ allocations:
     pages:
       start: 0x044
       end: 0x04C
-    notes: "https://store.atariage.com/products/grizzards-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/grizzards-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Elevator Agent"
     developer: "John W. Champeau"
@@ -514,7 +583,9 @@ allocations:
     pages:
       start: 0x04D
       end: 0x04E
-    notes: "https://champ.games/store/ols/products/cart-elevator-agent (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-elevator-agent"
+    verified: "2026-08-17"
 
   - title: "Minigun Miner"
     developer: "Dr. Ludos"
@@ -524,7 +595,9 @@ allocations:
     pages:
       start: 0x04F
       end: 0x04F
-    notes: "https://store.atariage.com/products/minigun-miner-atari-2600 (verified August 17, 2026)"
+    urls:
+      - "https://store.atariage.com/products/minigun-miner-atari-2600"
+    verified: "2026-08-17"
 
   - title: "Word Guess"
     developer: "CardboardBox"
@@ -542,7 +615,11 @@ allocations:
     pages:
       start: 0x051
       end: 0x051
-    notes: "https://champ.games/store/ols/products/cart-stratovox, https://champ.games/store/ols/products/cart-lucky-chase, https://champ.games/store/ols/products/cart-tomahawk-777 (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-stratovox"
+      - "https://champ.games/store/ols/products/cart-lucky-chase"
+      - "https://champ.games/store/ols/products/cart-tomahawk-777"
+    verified: "2026-08-17"
 
   - title: "HappyBird"
     developer: "Bruno STEUX"
@@ -560,7 +637,9 @@ allocations:
     pages:
       start: 0x053
       end: 0x053
-    notes: "https://champ.games/store/ols/products/cart-boom (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-boom"
+    verified: "2026-08-17"
       
   - title: "Bot & Tom"
     developer: "Thomas Jentzsch"
@@ -570,7 +649,10 @@ allocations:
     pages:
       start: 0x054
       end: 0x056
-    notes: "https://store.atariage.com/products/bot-tom-atari-2600-pre-order (checked August 17, 2026) - Pre-order"
+    urls:
+      - "https://store.atariage.com/products/bot-tom-atari-2600-pre-order"
+    verified: "2026-08-17"
+    notes: "Pre-order"
 
   - title: "Squish 'Em Deluxe"
     developer: "Bob Montgomery"
@@ -580,7 +662,9 @@ allocations:
     pages:
       start: 0x057
       end: 0x057
-    notes: "https://champ.games/store/ols/products/cart-squish-em-deluxe (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-squish-em-deluxe"
+    verified: "2026-08-17"
       
   - title: "Tutankham Arcade"
     developer: "Champ Games"
@@ -590,7 +674,9 @@ allocations:
     pages:
       start: 0x058
       end: 0x059
-    notes: "https://champ.games/store/ols/products/cart-tutankham-arcade (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-tutankham-arcade"
+    verified: "2026-08-17"
 
   - title: "Spiders Arcade"
     developer: "Champ Games"
@@ -600,7 +686,9 @@ allocations:
     pages:
       start: 0x05A
       end: 0x05B
-    notes: https://champ.games/store/ols/products/cart-spiders-arcade (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-spiders-arcade"
+    verified: "2026-08-17"
 
   - title: "Rip Off"
     developer: "Champ Games"
@@ -626,7 +714,9 @@ allocations:
     pages:
       start: 0x060
       end: 0x061
-    notes: "https://champ.games/store/ols/products/cart-chaotic-grill (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-chaotic-grill"
+    verified: "2026-08-17"
       
   - title: "T-Rex Runner"
     developer: "Fernando Rodrigues Salvio"
@@ -644,7 +734,9 @@ allocations:
     pages:
       start: 0x063
       end: 0x063
-    notes: "https://champ.games/store/ols/products/cart-gridlock (verified August 17, 2026)"
+    urls:
+      - "https://champ.games/store/ols/products/cart-gridlock"
+    verified: "2026-08-17"
       
   - title: "Zaxxon Arcade"
     developer: "Champ Games"

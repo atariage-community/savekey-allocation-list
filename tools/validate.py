@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 import sys
+from datetime import date
 from pathlib import Path
+from urllib.parse import urlparse
+
 import yaml
 
 ALLOWED_STATUS = {"reserved", "allocated", "retired"}
@@ -47,6 +50,27 @@ def main():
         kind = item.get("kind")
         if kind not in ALLOWED_KIND:
             ok &= fail(f"{label}: invalid kind {kind!r}; expected one of {sorted(ALLOWED_KIND)}")
+
+        urls = item.get("urls", [])
+        if not isinstance(urls, list) or not urls:
+            if "urls" in item:
+                ok &= fail(f"{label}: urls must be a non-empty list")
+        else:
+            for url in urls:
+                parsed_url = urlparse(url) if isinstance(url, str) else None
+                if parsed_url is None or parsed_url.scheme not in {"http", "https"} or not parsed_url.netloc:
+                    ok &= fail(f"{label}: invalid URL {url!r}")
+
+        verified = item.get("verified")
+        if verified is not None:
+            if not isinstance(verified, str):
+                ok &= fail(f"{label}: verified must be a quoted ISO date in YYYY-MM-DD format")
+            else:
+                try:
+                    if date.fromisoformat(verified).isoformat() != verified:
+                        raise ValueError
+                except ValueError:
+                    ok &= fail(f"{label}: invalid verified date {verified!r}; expected YYYY-MM-DD")
 
         try:
             start = as_int(item["pages"]["start"])
