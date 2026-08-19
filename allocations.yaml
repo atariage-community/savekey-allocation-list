@@ -953,15 +953,6 @@ allocations:
       start: 0x100
       end: 0x103
 
-  - title: "7800 Utility Cart HSC backup/restore"
-    developer: "RevEng"
-    platform: "Atari 7800"
-    kind: utility
-    status: allocated
-    pages:
-      start: 0x160
-      end: 0x17F
-
   - title: "7800basic High Score Storage"
     developer: "RevEng"
     platform: "Atari 7800"
