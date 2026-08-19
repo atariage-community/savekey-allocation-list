@@ -255,7 +255,7 @@ allocations:
       start: 0x01A
       end: 0x01A
     urls:
-      "https://forums.atariage.com/topic/210515-new-2600-homebrews-heartbreak-fix-it-felix-sr-joy-ride/"
+      - "https://forums.atariage.com/topic/210515-new-2600-homebrews-heartbreak-fix-it-felix-sr-joy-ride/"
     notes: "ROM only"    
 
   - title: "Circus AtariAge"
