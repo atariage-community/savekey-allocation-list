@@ -25,6 +25,7 @@
       --color-system: #8a4b00;
       --color-allocated: #005f73;
       --color-reserved: #5c1d80;
+      --color-abandoned: #6b1f2b;
       --color-scratchpad: #7a5c00;
       --color-utility: #005f43;
       --color-free: #111722;
@@ -35,6 +36,7 @@
       --rim-system: #ffaa00;
       --rim-allocated: #00ffff;
       --rim-reserved: #f368e0;
+      --rim-abandoned: #ff4757;
       --rim-scratchpad: #ffd166;
       --rim-utility: #00ff9f;
       --rim-free: #2b384e;
@@ -432,6 +434,12 @@
       border: 1px solid rgba(243, 104, 224, 0.3);
     }
 
+    .tag-game-abandoned {
+      background: rgba(255, 71, 87, 0.1);
+      color: var(--rim-abandoned);
+      border: 1px solid rgba(255, 71, 87, 0.3);
+    }
+
     .tag-system {
       background: rgba(255, 170, 0, 0.1);
       color: var(--rim-system);
@@ -648,7 +656,7 @@
         <div class="stat-value" id="stat-total-size">32 KB</div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">Allocated Pages</div>
+        <div class="stat-label">Assigned Pages</div>
         <div class="stat-value" id="stat-allocated-pages">-</div>
       </div>
       <div class="stat-card">
@@ -674,6 +682,9 @@
           </div>
           <div class="legend-item">
             <span class="legend-dot" style="background: var(--rim-reserved); border: 1px solid #fff;"></span> Reserved
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background: var(--rim-abandoned); border: 1px solid #fff;"></span> Abandoned
           </div>
           <div class="legend-item">
             <span class="legend-dot" style="background: var(--rim-utility); border: 1px solid #fff;"></span> Utility
@@ -1060,6 +1071,7 @@ function getItemBaseColor(item) {
   if (item.kind === "system") return "var(--color-system)";
   if (item.kind === "scratchpad") return "var(--color-scratchpad)";
   if (item.kind === "utility") return "var(--color-utility)";
+  if (item.status === "abandoned") return "var(--color-abandoned)";
   if (item.status === "reserved") return "var(--color-reserved)";
   return "var(--color-allocated)";
 }
@@ -1072,6 +1084,7 @@ function getItemRimColor(item) {
   if (item.kind === "system") return "var(--rim-system)";
   if (item.kind === "scratchpad") return "var(--rim-scratchpad)";
   if (item.kind === "utility") return "var(--rim-utility)";
+  if (item.status === "abandoned") return "var(--rim-abandoned)";
   if (item.status === "reserved") return "var(--rim-reserved)";
   return "var(--rim-allocated)";
 }
@@ -1293,7 +1306,9 @@ function renderTable() {
 
   tbody.innerHTML = filtered.map(item => {
     const isFree = item.kind === "unallocated";
-    let tagClass = item.status === "reserved" ? "tag-game-reserved" : "tag-game-allocated";
+    let tagClass = item.status === "abandoned"
+      ? "tag-game-abandoned"
+      : item.status === "reserved" ? "tag-game-reserved" : "tag-game-allocated";
     if (item.kind === "system") tagClass = "tag-system";
     else if (item.kind === "scratchpad") tagClass = "tag-scratchpad";
     else if (item.kind === "utility") tagClass = "tag-utility";
@@ -1394,7 +1409,7 @@ function updateModalYaml() {
     developer: "${dev}"
     platform: "${platform}"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: ${formatPageHex(start)}
       end: ${formatPageHex(end)}`;

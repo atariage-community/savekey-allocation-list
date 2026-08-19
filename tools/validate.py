@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 
 import yaml
 
-ALLOWED_STATUS = {"reserved", "allocated", "retired"}
+ALLOWED_STATUS = {"reserved", "allocated", "abandoned"}
 ALLOWED_KIND = {"game", "system", "scratchpad", "utility"}
 
 def as_int(value):
