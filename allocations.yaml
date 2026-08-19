@@ -157,7 +157,7 @@ allocations:
     urls:
       - "https://forums.atariage.com/topic/386678-fate-of-a-bait-finished-homebrew/"
     verified: "2026-08-19"
-    notes: "Replaces Mark Ball's 'Halloween game TBA', which apparently never was"
+    notes: "Has taken the slot of Mark Ball's 'Halloween game TBA', which apparently never was"
 
   - title: "Duck Attack!"
     developer: "Will Nicholes"
