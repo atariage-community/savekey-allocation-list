@@ -223,6 +223,7 @@ allocations:
   - title: "Boulder Dash"
     developer: "Andrew Davie & Thomas Jentzsch"
     platform: "Atari 2600"
+    kind: game
     status: allocated
     pages:
       start: 0x018
