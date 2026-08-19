@@ -146,18 +146,18 @@ allocations:
     notes: "Never released on cart, last update 2009, abandoned?"
     verified: "2026-08-18"
 
-  - title: "Halloween game TBA"
-    developer: "Mark Ball"
-    platform: "Atari 7800"
+  - title: "Fate Of A Bait"
+    developer: "Christian Hammers"
+    platform: "Atari 2600"
     kind: game
     status: reserved
     pages:
       start: 0x00F
       end: 0x00F
     urls:
-      - "https://forums.atariage.com/topic/152901-7800-happy-halloween/"
-    verified: "2026-08-17"
-    notes: "Never released on cart, seen at 2010 CGExpo, abandoned?"
+      - "https://forums.atariage.com/topic/386678-fate-of-a-bait-finished-homebrew/"
+    verified: "2026-08-19"
+    notes: "Replaces Mark Ball's 'Halloween game TBA', which apparently never was"
 
   - title: "Duck Attack!"
     developer: "Will Nicholes"
