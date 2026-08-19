@@ -60,21 +60,29 @@ allocations:
       - "https://store.atariage.com/products/go-fish-atari-2600"
     verified: "2026-08-17"
 
-  - title: "Strat-O-Gems"
+  - title: "Strat-O-Gems Deluxe"
     developer: "John Payson"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
       start: 0x004
       end: 0x007
+    urls:
+     - "https://web.archive.org/web/20220226222100/https://atariage.com/store/index.php?l=product_detail&p=337"
+    verified: "2026-08-18"
 
   - title: "AStar"
     developer: "Aaron Curtis"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
       start: 0x008
       end: 0x008
+    urls:
+     - "https://web.archive.org/web/20220226222039/https://atariage.com/store/index.php?l=product_detail&p=821"
+    verified: "2026-08-18"
 
   - title: "bonQ"
     developer: "Ken Siders"
@@ -84,6 +92,9 @@ allocations:
     pages:
       start: 0x009
       end: 0x00A
+    urls:
+     - "https://web.archive.org/web/20220226222100/https://atariage.com/store/index.php?l=product_detail&p=874"
+    verified: "2026-08-18"
 
   - title: "Lead / Pitch'n'Catch"
     developer: "Simone Serra"
@@ -123,11 +134,16 @@ allocations:
 
   - title: "Karate Master"
     developer: "Greg Kennedy"
+    platform: "Atari 2600"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: 0x00E
       end: 0x00E
+    urls:
+     - "https://forums.atariage.com/blogs/blog/238-hornpipe2s-blog"
+    notes: "Never released on cart, last update 2009, abandoned?"
+    verified: "2026-08-18"
 
   - title: "Halloween game TBA"
     developer: "Mark Ball"
@@ -243,11 +259,16 @@ allocations:
 
   - title: "Circus AtariAge"
     developer: "Jeff Johnson"
+    platform: "Atari 2600"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: 0x01B
       end: 0x01B
+    urls:
+     - "https://forums.atariage.com/topic/207391-circus-atariage-2600"
+    verified: "2026-08-18"
+    notes: "Never released on cart, dormant."
 
   - title: "Wall Jump Ninja"
     developer: "Tim FitzRandolph"
@@ -478,11 +499,16 @@ allocations:
 
   - title: "Tap-A-Mole"
     developer: "quohog"
+    platform: "Atari 2600"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: 0x032
       end: 0x032
+    urls:
+     - "https://forums.atariage.com/topic/309971-tap-a-mole-beta-is-it-done/"
+    verified: "2026-08-18"
+    notes: "Never released on cart, last update 2022."
 
   - title: "rubyQ"
     developer: "Silvio Mogno"
@@ -558,11 +584,16 @@ allocations:
 
   - title: "Mallard Season"
     developer: "Mallard Season"
+    platform: "Atari 2600"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: 0x03F
       end: 0x03F
+    urls:
+     - "https://forums.atariage.com/topic/301215-mallard-season/"
+    verified: "2026-08-18"
+    notes: "Never released on cart, last update 2020."
 
   - title: "Thrust+ Platinum"
     developer: "Thomas Jentzsch"
@@ -596,6 +627,7 @@ allocations:
 
   - title: "Berry Fun!"
     developer: "Mike Littau"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
@@ -790,11 +822,16 @@ allocations:
 
   - title: "Zeviouz"
     developer: "Chris Walton"
+    platform: "Atari 2600"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: 0x05E
       end: 0x05F
+    urls:
+     - "https://forums.atariage.com/topic/310276-zeviouz-2600/"
+    verified: "2026-08-18"
+    notes: "Not yet released on cart, WIP as of 2025, seems active."
 
   - title: "Chaotic Grill"
     developer: "Philip Blackman"
@@ -810,11 +847,15 @@ allocations:
       
   - title: "T-Rex Runner"
     developer: "Fernando Rodrigues Salvio"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
       start: 0x062
       end: 0x062
+    urls:
+     - "https://forums.atariage.com/topic/391916-fs-new-2600-homebrew-t-rex-runner/#comment-5874125"
+    verified: "2026-08-18"
   
   - title: "GridLock"
     developer: "Andrew Davie"
