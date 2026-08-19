@@ -529,7 +529,7 @@ allocations:
     urls:
      - "https://forums.atariage.com/topic/309971-tap-a-mole-beta-is-it-done/"
     verified: "2026-08-18"
-    notes: "Never released on cart, last update 2022."
+    notes: "Never released on cart, last update 2022. Uses two(!) keyboard controllers, no port for SaveKey free"
 
   - title: "rubyQ"
     developer: "Silvio Mogno"
