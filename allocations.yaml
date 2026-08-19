@@ -962,7 +962,7 @@ allocations:
       start: 0x160
       end: 0x17F
 
-  - title: "7800 High Score Storage"
+  - title: "7800basic High Score Storage"
     developer: "RevEng"
     platform: "Atari 7800"
     kind: utility
