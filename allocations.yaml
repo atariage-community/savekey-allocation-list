@@ -947,7 +947,7 @@ allocations:
     developer: "CPUWIZ"
     platform: "Atari 7800"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: 0x100
       end: 0x103
