@@ -198,10 +198,13 @@ allocations:
   - title: "Indenture"
     developer: "Will Nicholes"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: 0x014
       end: 0x015
+    urls:
+      - "https://forums.atariage.com/topic/157421-dragon-attack-2600/page/2/#findComment-2346086"
+    notes: "latest update in 2010, seems abandoned"  
 
   - title: "AtariVox Spell & Speak"
     developer: "Mike Saarna"
@@ -210,6 +213,9 @@ allocations:
     pages:
       start: 0x016
       end: 0x017
+    urls:
+      - "https://forums.atariage.com/topic/181473-atarivox-spell-speak/"    
+    notes: "ROM only"
 
   - title: "Boulder Dash"
     developer: "Andrew Davie & Thomas Jentzsch"
@@ -241,13 +247,16 @@ allocations:
       - "https://store.atariage.com/products/threemiddots-atari-2600"
     verified: "2026-08-18"
 
-  - title: "Gate Racer"
+  - title: "Gate Racer II"
     developer: "Steve Engelhardt"
     kind: game
     status: allocated
     pages:
       start: 0x019
       end: 0x019
+    urls:
+      - "https://forums.atariage.com/topic/209788-gate-racer/"
+    notes: "ROM only"  
 
   - title: "Heartbreak"
     developer: "Shane Lloyd"
@@ -256,6 +265,9 @@ allocations:
     pages:
       start: 0x01A
       end: 0x01A
+    urls:
+      - "https://forums.atariage.com/topic/210515-new-2600-homebrews-heartbreak-fix-it-felix-sr-joy-ride/"
+    notes: "ROM only"    
 
   - title: "Circus AtariAge"
     developer: "Jeff Johnson"
@@ -285,10 +297,11 @@ allocations:
   - title: "Dr.V.Dalek Berzerk"
     developer: "Michael Haas"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: 0x01D
       end: 0x01D
+    notes: "Nothing found"  
 
   - title: "Scramble"
     developer: "John W. Champeau"
@@ -480,7 +493,7 @@ allocations:
     developer: "unknown"
     platform: "Atari 7800"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: 0x02F
       end: 0x02F
@@ -688,12 +701,15 @@ allocations:
     verified: "2026-08-17"
 
   - title: "Word Guess"
-    developer: "CardboardBox"
+    developer: "Anthony Blackman"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: 0x050
       end: 0x050
+    urls:
+      - "https://forums.atariage.com/topic/331185-word-guess-wordle-port-wip/"
+    notes: "ROM only? Known ROM uses scratchpad"
 
   - title: "Stratovox"
     developer: "Carlos Centeno"
@@ -743,13 +759,16 @@ allocations:
     verified: "2026-08-17"
     notes: "Assumed 16-byte high-score allocation."
 
-  - title: "HappyBird"
-    developer: "Bruno STEUX"
+  - title: "Paul's HappyBird"
+    developer: "Bruno Steux"
     kind: game
     status: allocated
     pages:
       start: 0x052
       end: 0x052
+    urls:
+      - "https://forums.atariage.com/topic/347599-pauls-happybird-a-new-game-for-atari-2600/"
+    notes: "ROM only"
 
   - title: "Boom!"
     developer: "Chris Walton"
@@ -887,8 +906,9 @@ allocations:
     
   - title: "Phantasia"
     developer: "Bruce-Robert Pocock"
+    platform: "Atari 7800"
     kind: game
-    status: allocated
+    status: reserved
     pages:
       start: 0x068
       end: 0x06B
