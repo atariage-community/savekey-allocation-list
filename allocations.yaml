@@ -96,7 +96,7 @@ allocations:
      - "https://web.archive.org/web/20220226222100/https://atariage.com/store/index.php?l=product_detail&p=874"
     verified: "2026-08-18"
 
-  - title: "Lead / Pitch'n'Catch"
+  - title: "Lead / Pitch'n'Catch / Omicron / Palomino"
     developer: "Simone Serra"
     platform: "Atari 2600"
     kind: game
@@ -106,7 +106,8 @@ allocations:
       end: 0x00B
     urls:
       - "https://store.atariage.com/products/lead-atari-2600"
-    verified: "2026-08-17"
+      - "https://store.atariage.com/products/omicron-atari-2600"
+    verified: "2026-08-19"
 
   - title: "Elevators Amiss"
     developer: "Bob Montgomery"
@@ -258,7 +259,7 @@ allocations:
       - "https://forums.atariage.com/topic/209788-gate-racer/"
     notes: "ROM only"  
 
-  - title: "Heartbreak"
+  - title: "Piñata (Heartbreak, Ping, Joyride, Fix-It Felix Sr., Flipside)"
     developer: "Shane Lloyd"
     kind: game
     status: allocated
@@ -267,7 +268,8 @@ allocations:
       end: 0x01A
     urls:
       - "https://forums.atariage.com/topic/210515-new-2600-homebrews-heartbreak-fix-it-felix-sr-joy-ride/"
-    notes: "ROM only"    
+      - "https://store.atariage.com/products/pintildeata-atari-2600"
+    verified: "2026-08-19"  
 
   - title: "Circus AtariAge"
     developer: "Jeff Johnson"
