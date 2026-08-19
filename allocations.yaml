@@ -198,6 +198,7 @@ allocations:
 
   - title: "Indenture"
     developer: "Will Nicholes"
+    platform: "Atari 2600"
     kind: game
     status: reserved
     pages:
@@ -209,7 +210,8 @@ allocations:
 
   - title: "AtariVox Spell & Speak"
     developer: "Mike Saarna"
-    kind: game
+    platform: "Atari 2600"
+    kind: utility
     status: allocated
     pages:
       start: 0x016
@@ -220,7 +222,7 @@ allocations:
 
   - title: "Boulder Dash"
     developer: "Andrew Davie & Thomas Jentzsch"
-    kind: game
+    platform: "Atari 2600"
     status: allocated
     pages:
       start: 0x018
@@ -236,6 +238,7 @@ allocations:
 
   - title: "Three·s"
     developer: "Thomas Jentzsch"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
@@ -250,6 +253,7 @@ allocations:
 
   - title: "Gate Racer II"
     developer: "Steve Engelhardt"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
@@ -261,6 +265,7 @@ allocations:
 
   - title: "Piñata (Heartbreak, Ping, Joyride, Fix-It Felix Sr., Flipside)"
     developer: "Shane Lloyd"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
@@ -704,6 +709,7 @@ allocations:
 
   - title: "Word Guess"
     developer: "Anthony Blackman"
+    platform: "Atari 2600"
     kind: game
     status: reserved
     pages:
@@ -763,6 +769,7 @@ allocations:
 
   - title: "Paul's HappyBird"
     developer: "Bruno Steux"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
@@ -835,6 +842,7 @@ allocations:
 
   - title: "Rip Off"
     developer: "Champ Games"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
@@ -892,6 +900,7 @@ allocations:
       
   - title: "Zaxxon Arcade"
     developer: "Champ Games"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
@@ -900,6 +909,7 @@ allocations:
 
   - title: "Cosmic Dungeon"
     developer: "Champ Games"
+    platform: "Atari 2600"
     kind: game
     status: allocated
     pages:
