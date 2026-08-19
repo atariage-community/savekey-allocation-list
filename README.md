@@ -60,7 +60,9 @@ Example allocation:
     notes: "High scores and game settings"
 ```
 
-Use `status: reserved` when requesting space for a new or unreleased project. Change it to `status: allocated` once either a cartridge is released or a ROM playable on a multi-ROM cartridge is released and uses the allotted page.
+Use `status: reserved` when requesting space for a project that has not had a qualifying release. Change it to `status: allocated` when either a cartridge release or a released ROM actually uses the allotted SaveKey/AtariVox page. A released ROM may be played from a multi-ROM cartridge; the important criterion is that the released software uses the allotted page.
+
+Use `status: abandoned` only when the project never had a qualifying cartridge or ROM release and there is clear evidence that the developer has abandoned it. An abandoned entry continues to protect its pages from reuse until maintainers explicitly free or reassign them. To make the pages available again, remove the abandoned entry; the viewer will then show them as available for future allocations.
 
 If you are not comfortable using Git or creating a pull request, simply open an issue with the project name, developer, requested number of pages, and any preferred range. A maintainer can add it for you.
 
@@ -72,7 +74,7 @@ Each allocation supports:
 - `developer` — developer, author, team, or publisher credited by the source
 - `platform` — optional; defaults to Atari 2600
 - `kind` — `game`, `system`, `scratchpad`, or `utility`
-- `status` — `reserved` until a cartridge release or a ROM release playable on a multi-ROM cartridge uses the allotted page; `allocated` after such a release; or `retired`
+- `status` — `reserved` before a qualifying release, `allocated` after released software uses the allotted page, or `abandoned` when an unreleased project is clearly discontinued
 - `pages.start` / `pages.end` — inclusive hexadecimal page range
 - `addresses` — optional inclusive hexadecimal byte range, or list of ranges, for a partial-page or discontiguous allocation
 - `urls` — optional list of source URLs that verify the allocation or project status
