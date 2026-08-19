@@ -23,8 +23,8 @@
 
       /* Base category fills */
       --color-system: #8a4b00;
-      --color-game-2600: #005f73;
-      --color-game-7800: #5c1d80;
+      --color-allocated: #005f73;
+      --color-reserved: #5c1d80;
       --color-scratchpad: #7a5c00;
       --color-utility: #005f43;
       --color-free: #111722;
@@ -33,8 +33,8 @@
 
       /* Bold, high-luminance phosphor rim colors */
       --rim-system: #ffaa00;
-      --rim-game-2600: #00ffff;
-      --rim-game-7800: #f368e0;
+      --rim-allocated: #00ffff;
+      --rim-reserved: #f368e0;
       --rim-scratchpad: #ffd166;
       --rim-utility: #00ff9f;
       --rim-free: #2b384e;
@@ -272,7 +272,7 @@
       display: none;
       z-index: 1000;
       background: #0d1527;
-      border: 1px solid var(--rim-game-2600);
+      border: 1px solid var(--rim-allocated);
       color: #fff;
       padding: 8px 12px;
       border-radius: 6px;
@@ -313,8 +313,8 @@
     }
 
     .search-input:focus {
-      border-color: var(--rim-game-2600);
-      box-shadow: 0 0 0 1px var(--rim-game-2600);
+      border-color: var(--rim-allocated);
+      box-shadow: 0 0 0 1px var(--rim-allocated);
     }
 
     .filter-group {
@@ -336,7 +336,7 @@
     }
 
     .select-control:focus {
-      border-color: var(--rim-game-2600);
+      border-color: var(--rim-allocated);
     }
 
     /* Table */
@@ -382,7 +382,7 @@
     }
 
     tr.row-highlight td {
-      border-left: 3px solid var(--rim-game-2600);
+      border-left: 3px solid var(--rim-allocated);
     }
 
     .code-cell {
@@ -420,15 +420,15 @@
       text-transform: uppercase;
     }
 
-    .tag-game-2600 {
+    .tag-game-allocated {
       background: rgba(0, 255, 255, 0.1);
-      color: var(--rim-game-2600);
+      color: var(--rim-allocated);
       border: 1px solid rgba(0, 255, 255, 0.3);
     }
 
-    .tag-game-7800 {
+    .tag-game-reserved {
       background: rgba(243, 104, 224, 0.1);
-      color: var(--rim-game-7800);
+      color: var(--rim-reserved);
       border: 1px solid rgba(243, 104, 224, 0.3);
     }
 
@@ -477,7 +477,7 @@
     }
 
     .source-text a {
-      color: var(--rim-game-2600);
+      color: var(--rim-allocated);
     }
 
     /* Modal */
@@ -564,7 +564,7 @@
       padding: 12px;
       font-family: var(--font-mono);
       font-size: 0.8rem;
-      color: var(--rim-game-2600);
+      color: var(--rim-allocated);
       white-space: pre;
       overflow-x: auto;
       margin-top: 12px;
@@ -588,7 +588,7 @@
       text-decoration: none;
     }
     footer a:hover {
-      color: var(--rim-game-2600);
+      color: var(--rim-allocated);
       text-decoration: underline;
     }
 
@@ -670,10 +670,10 @@
             <span class="legend-dot" style="background: var(--rim-system); border: 1px solid #fff;"></span> System
           </div>
           <div class="legend-item">
-            <span class="legend-dot" style="background: var(--rim-game-2600); border: 1px solid #fff;"></span> 2600 Game
+            <span class="legend-dot" style="background: var(--rim-allocated); border: 1px solid #fff;"></span> Allocated
           </div>
           <div class="legend-item">
-            <span class="legend-dot" style="background: var(--rim-game-7800); border: 1px solid #fff;"></span> 7800 Game
+            <span class="legend-dot" style="background: var(--rim-reserved); border: 1px solid #fff;"></span> Reserved
           </div>
           <div class="legend-item">
             <span class="legend-dot" style="background: var(--rim-utility); border: 1px solid #fff;"></span> Utility
@@ -929,13 +929,15 @@ function processAllocations(rawYaml) {
 
     const count = end - start + 1;
     const addressRanges = normalizeAddressRanges(item, pageSize);
+    const kind = item.kind || "game";
     processed.push({
       id: `alloc-${allocCounter++}`,
       title: item.title,
       developer: item.developer || "",
       platform: item.platform || defaultPlatform,
-      kind: item.kind || "game",
-      status: item.status || "allocated",
+      platformSpecified: Boolean(item.platform),
+      kind,
+      status: item.status || (kind === "game" ? "reserved" : "allocated"),
       pages: { start, end },
       addresses: addressRanges,
       pageCount: count,
@@ -1058,8 +1060,8 @@ function getItemBaseColor(item) {
   if (item.kind === "system") return "var(--color-system)";
   if (item.kind === "scratchpad") return "var(--color-scratchpad)";
   if (item.kind === "utility") return "var(--color-utility)";
-  if (item.platform === "Atari 7800") return "var(--color-game-7800)";
-  return "var(--color-game-2600)";
+  if (item.status === "reserved") return "var(--color-reserved)";
+  return "var(--color-allocated)";
 }
 
 /**
@@ -1070,8 +1072,8 @@ function getItemRimColor(item) {
   if (item.kind === "system") return "var(--rim-system)";
   if (item.kind === "scratchpad") return "var(--rim-scratchpad)";
   if (item.kind === "utility") return "var(--rim-utility)";
-  if (item.platform === "Atari 7800") return "var(--rim-game-7800)";
-  return "var(--rim-game-2600)";
+  if (item.status === "reserved") return "var(--rim-reserved)";
+  return "var(--rim-allocated)";
 }
 
 /**
@@ -1162,10 +1164,18 @@ function renderMemoryVisualizer() {
       const addrEnd = toHex((p + 1) * 64 - 1, 4);
       
       tooltip.innerHTML = `
-        <div style="font-weight:700; color:${rimColor};">${item ? items.map(pageItem => pageItem.title).join(" / ") : "Free"}</div>
+        <div style="font-weight:700; color:${rimColor};">${item ? items.map(pageItem => escapeHtml(pageItem.title)).join(" / ") : "Free"}</div>
         <div style="margin-top:4px;">Page: <strong>${pageHex}</strong> (dec ${p})</div>
         <div>Addr: <strong>${addrStart} - ${addrEnd}</strong></div>
-        ${items.map(pageItem => `<div style="font-size:0.7rem; color:#94a3b8; margin-top:2px;">${pageItem.title}: ${pageItem.addressRange} (${pageItem.byteCount} bytes)</div>`).join("")}
+        ${items.map(pageItem => `
+          <div style="font-size:0.7rem; color:#94a3b8; margin-top:6px;">
+            ${items.length > 1 ? `<div><strong>${escapeHtml(pageItem.title)}</strong></div>` : ""}
+            <div>Developer: ${escapeHtml(pageItem.developer || "Not specified")}</div>
+            ${pageItem.kind !== "unallocated" ? `<div>Platform: ${pageItem.platformSpecified ? escapeHtml(pageItem.platform) : "Not specified"}</div>` : ""}
+            <div>Status: <strong style="text-transform:capitalize;">${escapeHtml(pageItem.status)}</strong></div>
+            <div>${pageItem.addressRange} (${pageItem.byteCount} bytes)</div>
+          </div>
+        `).join("")}
       `;
       tooltip.style.display = "block";
     });
@@ -1283,11 +1293,10 @@ function renderTable() {
 
   tbody.innerHTML = filtered.map(item => {
     const isFree = item.kind === "unallocated";
-    let tagClass = "tag-game-2600";
+    let tagClass = item.status === "reserved" ? "tag-game-reserved" : "tag-game-allocated";
     if (item.kind === "system") tagClass = "tag-system";
     else if (item.kind === "scratchpad") tagClass = "tag-scratchpad";
     else if (item.kind === "utility") tagClass = "tag-utility";
-    else if (item.platform === "Atari 7800") tagClass = "tag-game-7800";
     else if (isFree) tagClass = "tag-free";
 
     const sourceLinks = item.urls.map((url, index) => {

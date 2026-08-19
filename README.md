@@ -60,7 +60,7 @@ Example allocation:
     notes: "High scores and game settings"
 ```
 
-Use `status: reserved` when requesting space for a new or unreleased project, and `status: allocated` for an allocation already in use.
+Use `status: reserved` when requesting space for a new or unreleased project. Change it to `status: allocated` once either a cartridge is released or a ROM playable on a multi-ROM cartridge is released and uses the allotted page.
 
 If you are not comfortable using Git or creating a pull request, simply open an issue with the project name, developer, requested number of pages, and any preferred range. A maintainer can add it for you.
 
@@ -72,7 +72,7 @@ Each allocation supports:
 - `developer` — developer, author, team, or publisher credited by the source
 - `platform` — optional; defaults to Atari 2600
 - `kind` — `game`, `system`, `scratchpad`, or `utility`
-- `status` — `reserved`, `allocated`, or `retired`
+- `status` — `reserved` until a cartridge release or a ROM release playable on a multi-ROM cartridge uses the allotted page; `allocated` after such a release; or `retired`
 - `pages.start` / `pages.end` — inclusive hexadecimal page range
 - `addresses` — optional inclusive hexadecimal byte range, or list of ranges, for a partial-page or discontiguous allocation
 - `urls` — optional list of source URLs that verify the allocation or project status
