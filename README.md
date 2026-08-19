@@ -1,8 +1,6 @@
 # SaveKey Allocation List
 
-Community-maintained SaveKey/AtariVox memory allocation registry for Atari 2600 and compatible projects.
-
-The goal is to provide one easy-to-review place where developers can reserve persistent-storage pages without accidentally colliding with another game.
+Community-maintained SaveKey/AtariVox memory allocation registry for Atari 2600 and compatible projects. Use it to reserve persistent-storage pages without colliding with other projects.
 
 > This is a community-maintained project under `atariage-community`. It is not an official AtariAge repository.
 
@@ -10,13 +8,9 @@ The goal is to provide one easy-to-review place where developers can reserve per
 
 **[`allocations.yaml`](allocations.yaml) is the single source of truth.**
 
-All allocation data is maintained in this file.
-
-For a human-friendly view of the current allocation map, including a visual memory map, search and filtering, see:
+For a human-friendly view that reads `allocations.yaml` directly and provides a visual memory map, search and filtering, see:
 
 https://atariage-community.github.io/savekey-allocation-list/allocations.html
-
-The web interface reads the allocation data directly from `allocations.yaml`, so there is no separate generated allocation list that needs to be kept in sync.
 
 The registry uses **64-byte pages**. By default, address ranges are derived from the page numbers:
 
@@ -28,12 +22,13 @@ This avoids page/address mismatches.
 A developer is normally assigned a complete 64-byte page. Because a game may
 use only part of that page, the assigned developer can document multiple games
 on the same page by declaring each game's exact inclusive
-`addresses.start` / `addresses.end` range. These byte ranges must not overlap
+`addresses.start` / `addresses.end` range. A game with discontiguous storage can
+declare `addresses` as a list of these ranges. Address ranges must not overlap
 and must fall within, and cover the same page or pages as, the `pages` range.
 
 ## Adding or changing an allocation
 
-For most developers, the workflow is:
+To add or change an allocation:
 
 1. Fork this repository to your own GitHub account.
 2. Create a branch in your fork.
@@ -43,10 +38,9 @@ For most developers, the workflow is:
    python -m pip install -r requirements.txt
    python tools/validate.py allocations.yaml
    ```
-5. Commit and push your changes.
-6. Open a pull request back to the `main` branch of this repository.
+5. Commit, push, and open a pull request against this repository's `main` branch.
 
-You **do not need Python installed locally** to contribute. GitHub Actions automatically validates every pull request. If you already have Python installed, running the validator locally is optional but recommended. It can catch problems, such as invalid or overlapping page ranges, before you push your changes.
+GitHub Actions validates every pull request. Local validation is optional, but can catch invalid or overlapping ranges before you push.
 
 Before choosing a new range, it is still a good idea to check the current allocation map and any open pull requests to see what is already in use or being requested.
 
@@ -59,7 +53,7 @@ Example allocation:
     status: reserved
     pages:
       start: 0x104
-      end: 0x105
+      end: 0x104
     urls:
       - "https://example.com/my-new-game"
     verified: "2026-08-17"
@@ -80,7 +74,7 @@ Each allocation supports:
 - `kind` — `game`, `system`, `scratchpad`, or `utility`
 - `status` — `reserved`, `allocated`, or `retired`
 - `pages.start` / `pages.end` — inclusive hexadecimal page range
-- `addresses.start` / `addresses.end` — optional inclusive hexadecimal byte range for a partial-page allocation
+- `addresses` — optional inclusive hexadecimal byte range, or list of ranges, for a partial-page or discontiguous allocation
 - `urls` — optional list of source URLs that verify the allocation or project status
 - `verified` — optional date on which the sources were verified, quoted in ISO `YYYY-MM-DD` format
 - `notes` — optional commentary that is not represented by another field
@@ -90,7 +84,7 @@ Please keep the schema simple. If a new field seems useful, discuss it in an iss
 Shared-page allocations are represented as separate entries. For example:
 
 ```yaml
-  - title: "Small Save"
+  - title: "My Other Game"
     developer: "Your Name"
     kind: game
     status: allocated
@@ -103,6 +97,16 @@ Shared-page allocations are represented as separate entries. For example:
 ```
 
 Omit `addresses` when the allocation reserves complete pages.
+
+Use a list when one game has multiple discontiguous ranges:
+
+```yaml
+    addresses:
+      - start: 0x0600
+        end: 0x0617
+      - start: 0x061E
+        end: 0x0626
+```
 
 ## Validation
 
@@ -130,8 +134,6 @@ tools/
 .github/workflows/
   validate.yml                # automatic validation for pull requests
 ```
-
-There is intentionally no generated `ALLOCATIONS.md`. The YAML file is the authoritative data source, while the GitHub Pages interface provides the human-readable view.
 
 ## Imported source
 

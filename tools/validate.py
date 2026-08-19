@@ -90,31 +90,56 @@ def main():
             occupied_pages.add(page)
 
         addresses = item.get("addresses")
+        if addresses is None:
+            raw_address_ranges = [{"start": start * page_size, "end": (end + 1) * page_size - 1}]
+        elif isinstance(addresses, dict):
+            raw_address_ranges = [addresses]
+        elif isinstance(addresses, list) and addresses:
+            raw_address_ranges = addresses
+        else:
+            ok &= fail(f"{label}: addresses must be a range mapping or a non-empty list of ranges")
+            continue
+
+        address_ranges = []
         try:
-            address_start = as_int(addresses["start"]) if addresses is not None else start * page_size
-            address_end = as_int(addresses["end"]) if addresses is not None else (end + 1) * page_size - 1
+            for address_range in raw_address_ranges:
+                address_ranges.append((as_int(address_range["start"]), as_int(address_range["end"])))
         except Exception as exc:
             ok &= fail(f"{label}: invalid address range: {exc}")
             continue
 
-        if address_start > address_end:
-            ok &= fail(f"{label}: start address is greater than end address")
+        range_pages = set()
+        valid_ranges = True
+        for address_start, address_end in address_ranges:
+            if address_start > address_end:
+                ok &= fail(f"{label}: start address is greater than end address")
+                valid_ranges = False
+                continue
+            if address_start < start * page_size or address_end > (end + 1) * page_size - 1:
+                ok &= fail(
+                    f"{label}: address range 0x{address_start:04X}-0x{address_end:04X} "
+                    f"falls outside page range 0x{start:03X}-0x{end:03X}"
+                )
+                valid_ranges = False
+                continue
+            range_pages.update(range(address_start // page_size, address_end // page_size + 1))
+
+        if not valid_ranges:
             continue
-        if address_start // page_size != start or address_end // page_size != end:
-            ok &= fail(
-                f"{label}: address range 0x{address_start:04X}-0x{address_end:04X} "
-                f"does not match page range 0x{start:03X}-0x{end:03X}"
-            )
+        expected_pages = set(range(start, end + 1))
+        if range_pages != expected_pages:
+            ok &= fail(f"{label}: address ranges do not cover page range 0x{start:03X}-0x{end:03X}")
             continue
 
-        for address in range(address_start, address_end + 1):
-            if address in occupied_addresses:
-                ok &= fail(
-                    f"overlap at address 0x{address:04X}: {label!r} conflicts with "
-                    f"{occupied_addresses[address]!r}"
-                )
-            else:
-                occupied_addresses[address] = label
+        for address_start, address_end in address_ranges:
+            for address in range(address_start, address_end + 1):
+                if address in occupied_addresses:
+                    ok &= fail(
+                        f"overlap at address 0x{address:04X}: {label!r} conflicts with "
+                        f"{occupied_addresses[address]!r}"
+                    )
+                else:
+                    occupied_addresses[address] = label
 
     # Require deterministic ordering to keep PR diffs easy to review.
     starts = [as_int(i["pages"]["start"]) for i in allocations]

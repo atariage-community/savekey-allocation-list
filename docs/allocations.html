@@ -860,6 +860,15 @@ function formatAddressRange(startAddress, endAddress) {
   return `${toHex(startAddress, 4)} - ${toHex(endAddress, 4)}`;
 }
 
+function normalizeAddressRanges(item, pageSize) {
+  if (Array.isArray(item.addresses)) return item.addresses;
+  if (item.addresses) return [item.addresses];
+  return [{
+    start: item.pages.start * pageSize,
+    end: (item.pages.end + 1) * pageSize - 1
+  }];
+}
+
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, character => ({
     "&": "&amp;",
@@ -882,8 +891,8 @@ function processAllocations(rawYaml) {
   rawAllocations.sort((a, b) => {
     const pageDifference = a.pages.start - b.pages.start;
     if (pageDifference !== 0) return pageDifference;
-    return (a.addresses?.start ?? a.pages.start * pageSize) -
-           (b.addresses?.start ?? b.pages.start * pageSize);
+    return normalizeAddressRanges(a, pageSize)[0].start -
+           normalizeAddressRanges(b, pageSize)[0].start;
   });
 
   const processed = [];
@@ -919,8 +928,7 @@ function processAllocations(rawYaml) {
     }
 
     const count = end - start + 1;
-    const addressStart = item.addresses?.start ?? start * pageSize;
-    const addressEnd = item.addresses?.end ?? (end + 1) * pageSize - 1;
+    const addressRanges = normalizeAddressRanges(item, pageSize);
     processed.push({
       id: `alloc-${allocCounter++}`,
       title: item.title,
@@ -929,10 +937,10 @@ function processAllocations(rawYaml) {
       kind: item.kind || "game",
       status: item.status || "allocated",
       pages: { start, end },
-      addresses: { start: addressStart, end: addressEnd },
+      addresses: addressRanges,
       pageCount: count,
-      byteCount: addressEnd - addressStart + 1,
-      addressRange: formatAddressRange(addressStart, addressEnd),
+      byteCount: addressRanges.reduce((total, range) => total + range.end - range.start + 1, 0),
+      addressRange: addressRanges.map(range => formatAddressRange(range.start, range.end)).join(", "),
       pageRangeFormatted: formatPageRange(start, end),
       urls: Array.isArray(item.urls) ? item.urls : [],
       verified: item.verified || "",
