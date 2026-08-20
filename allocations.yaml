@@ -277,6 +277,18 @@ allocations:
       - "https://store.atariage.com/products/pintildeata-atari-2600"
     verified: "2026-08-19"  
 
+  - title: "Venture Reloaded"
+    developer: "Jeff Johnson"
+    platform: "Atari 2600"
+    kind: game
+    status: reserved
+    pages:
+      start: 0x01B
+      end: 0x01B
+    urls:
+     - "https://forums.atariage.com/topic/297609-venture-reloaded/"
+    verified: "2026-08-20"
+
   - title: "Circus AtariAge"
     developer: "Jeff Johnson"
     platform: "Atari 2600"
@@ -289,6 +301,7 @@ allocations:
      - "https://forums.atariage.com/topic/207391-circus-atariage-2600"
     verified: "2026-08-18"
     notes: "Never released on cart, dormant."
+
 
   - title: "Wall Jump Ninja"
     developer: "Tim FitzRandolph"
@@ -422,7 +435,7 @@ allocations:
     verified: "2026-08-17"
 
   - title: "Space Game"
-    developer: "Karl Garrison (kdgarris)"
+    developer: "Karl Garrison (Karl G/kdgarris)"
     platform: "Atari 2600"
     kind: game
     status: allocated
@@ -432,6 +445,18 @@ allocations:
     urls:
       - "https://store.atariage.com/products/space-game-atari-2600"
     verified: "2026-08-17"
+
+  - title: "Penult"
+    developer: "Karl Garrison (Karl G/kdgarris)"
+    platform: "Atari 2600"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x026
+      end: 0x026
+    urls:
+      - "https://store.atariage.com/products/penult-atari-2600-pre-order"
+    verified: "2026-08-20"
 
   - title: "Avalanche"
     developer: "John W. Champeau"
@@ -529,7 +554,7 @@ allocations:
       start: 0x032
       end: 0x032
     urls:
-     - "https://forums.atariage.com/topic/309971-tap-a-mole-beta-is-it-done/"
+     - "https://forums.atariage.com/topic/309971-tap-a-mole-beta-is-it-done/"    
     verified: "2026-08-18"
     notes: "Never released on cart, last update 2022. Uses two(!) keyboard controllers, no port for SaveKey free"
 
