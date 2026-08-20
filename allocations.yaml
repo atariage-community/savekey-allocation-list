@@ -150,7 +150,7 @@ allocations:
     developer: "Christian Hammers"
     platform: "Atari 2600"
     kind: game
-    status: reserved
+    status: allocated
     pages:
       start: 0x00F
       end: 0x00F
