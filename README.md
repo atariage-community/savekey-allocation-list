@@ -1,55 +1,90 @@
 # SaveKey Allocation List
 
-Community-maintained SaveKey/AtariVox memory allocation registry for Atari 2600/7800 projects. Use it to reserve persistent-storage pages without colliding with existing allocations.
+The **SaveKey Allocation List** is a community-maintained registry of persistent
+storage allocations for Atari 2600 and 7800 projects. Developers can reserve
+SaveKey/AtariVox pages without conflicting with existing allocations.
 
 > This is a community-maintained project under `atariage-community`. It is not an official AtariAge repository.
 
+## Quick links
+
+- [Browse the visual allocation map](https://atariage-community.github.io/savekey-allocation-list/allocations.html)
+- [View the canonical allocation data](allocations.yaml)
+- [Request or change an allocation](#requesting-or-changing-an-allocation)
+
 ## What is a SaveKey?
 
-The **SaveKey** is a small memory device that plugs into the second controller port of an Atari 2600 or 7800. It provides 32 KB of non-volatile EEPROM storage (512 pages of 64 bytes) that games can use to save high scores, settings, and progress across power cycles. The **AtariVox** is a compatible device that offers the same storage plus a built-in speech synthesizer. This registry coordinates how projects allocate that shared storage.
+The **SaveKey** is a small memory device that plugs into the second controller
+port of an Atari 2600 or 7800. It provides 32 KB of non-volatile EEPROM storage
+(512 pages of 64 bytes) that games can use to retain high scores, settings, and
+progress after the console is switched off. The **AtariVox** provides compatible
+storage and adds a built-in speech synthesizer. This registry coordinates how
+projects use that shared address space.
 
-<img src="docs/savekey.png" alt="A SaveKey memory device that plugs into an Atari controller port" width="320">
+<img src="docs/savekey.png" alt="Blue SaveKey memory device with a nine-pin controller connector" width="320">
 
-## The canonical file
+## How allocations work
 
 **[`allocations.yaml`](allocations.yaml) is the single source of truth.**
+The visual allocation map reads this file directly and provides a visual view with
+search and filtering.
 
-For a human-friendly view that reads `allocations.yaml` directly and provides a visual memory map, search and filtering, see:
+### Pages and addresses
 
-https://atariage-community.github.io/savekey-allocation-list/allocations.html
-
-The registry uses **64-byte pages**, or storage slots. By default, address ranges are derived from the page numbers:
+The registry uses **64-byte pages**, or storage slots. By default, address
+ranges are derived from the page numbers:
 
 - start address = `page × 64`
 - end address = `start address + 63`
 
-This avoids page/address mismatches.
+This avoids page/address mismatches. A developer is normally assigned a complete
+page, but multiple games from that developer can share it when each game declares
+its exact inclusive `addresses.start` / `addresses.end` range. A game with
+discontiguous storage can list `addresses` as multiple ranges.
 
-A developer is normally assigned a complete 64-byte page.
+Address ranges must not overlap. They must fall within and collectively touch
+every page named in the `pages` range.
 
-Because a game may use only part of a page, the assigned developer can document
-multiple games on the same page by giving each game its exact inclusive
-`addresses.start` / `addresses.end` range. A game with discontiguous storage can
-list `addresses` as multiple ranges.
+### Allocation statuses
 
-Address ranges must not overlap, and must fall within the page or pages named in
-the `pages` range.
+| Status | Use when |
+| --- | --- |
+| `reserved` | A project does not yet have a qualifying cartridge or ROM release. |
+| `allocated` | A cartridge release or released ROM uses the allotted page. |
+| `abandoned` | An unreleased project has clear evidence that its developer abandoned it. |
 
-## Adding or changing an allocation
+A released ROM can be played from a multi-ROM cartridge; what matters is that
+the released software uses the allotted page.
 
-To add or change an allocation:
+An abandoned entry continues to protect its pages from reuse until maintainers
+explicitly free or reassign them. To make the pages available again, remove the
+abandoned entry; the visual allocation map will then show them as available.
 
-1. Fork this repository to your own GitHub account.
-2. Create a branch in your fork.
-3. Edit **only `allocations.yaml`**.
-4. Optionally run the [local validator](#validation) to catch mistakes before pushing.
-5. Commit, push, and open a pull request against this repository's `main` branch.
+### Scratchpad pages
 
-GitHub Actions validates every pull request. Local validation is optional, but can catch invalid or overlapping ranges before you push.
+Pages `0x0C0–0x0FF` (`0x3000–0x3FFF`) are designated as non-permanent
+scratchpad space in the original allocation list. They are represented
+explicitly and are therefore not shown as available permanent allocations.
 
-Before choosing a new range, it is still a good idea to check the current allocation map and any open pull requests to see what is already in use or being requested.
+## Requesting or changing an allocation
 
-Example allocation:
+1. Check the [visual allocation map](https://atariage-community.github.io/savekey-allocation-list/allocations.html)
+  and open pull requests to see what is already in use or being requested.
+2. Fork this repository to your own GitHub account.
+3. Create a branch in your fork.
+4. Edit **only `allocations.yaml`**.
+5. Optionally run the [local validator](#validation) to catch mistakes before pushing.
+6. Commit, push, and open a pull request against this repository's `main` branch.
+
+GitHub Actions validates every pull request. Local validation is optional, but
+it can catch invalid or overlapping ranges before you push.
+
+If you are not comfortable using Git or creating a pull request, [open an
+issue](https://github.com/atariage-community/savekey-allocation-list/issues/new)
+with the project name, developer, requested number of pages, and any preferred
+range. A maintainer can add it for you.
+
+### Example allocation
 
 ```yaml
   - title: "My New Game"
@@ -65,22 +100,19 @@ Example allocation:
     notes: "High scores and game settings"
 ```
 
-Use `status: reserved` when requesting space for a project that has not had a qualifying release. Change it to `status: allocated` when either a cartridge release or a released ROM actually uses the allotted SaveKey/AtariVox page. A released ROM may be played from a multi-ROM cartridge; the important criterion is that the released software uses the allotted page.
+## Allocation fields
 
-Use `status: abandoned` only when the project never had a qualifying cartridge or ROM release and there is clear evidence that the developer has abandoned it. An abandoned entry continues to protect its pages from reuse until maintainers explicitly free or reassign them. To make the pages available again, remove the abandoned entry; the viewer will then show them as available for future allocations.
-
-If you are not comfortable using Git or creating a pull request, simply open an issue with the project name, developer, requested number of pages, and any preferred range. A maintainer can add it for you.
-
-## Fields
-
-Each allocation supports:
+Every allocation requires:
 
 - `title` — game/project name
-- `developer` — developer, author, team, or publisher credited by the source
-- `platform` — optional; defaults to Atari 2600
-- `kind` — `game`, `system`, `scratchpad`, or `utility`
-- `status` — allocation state: `reserved`, `allocated`, or `abandoned` (see [Adding or changing an allocation](#adding-or-changing-an-allocation) for definitions)
+- `kind` — normally `game`; `system` and `scratchpad` are reserved values, and `utility` is used for non-game software
+- `status` — `reserved`, `allocated`, or `abandoned`
 - `pages.start` / `pages.end` — inclusive hexadecimal page range
+
+Optional fields are:
+
+- `developer` — developer, author, team, or publisher credited by the source
+- `platform` — target platform; defaults to Atari 2600
 - `addresses` — optional inclusive hexadecimal byte range, or list of ranges, for a partial-page or discontiguous allocation
 - `urls` — optional list of source URLs that verify the allocation or project status
 - `verified` — optional date on which the sources were verified, quoted in ISO `YYYY-MM-DD` format
@@ -88,7 +120,9 @@ Each allocation supports:
 
 Please keep the schema simple. If a new field seems useful, discuss it in an issue before adding it broadly.
 
-Shared-page allocations are represented as separate entries. For example:
+### Shared and discontiguous allocations
+
+Represent games that share a page as separate entries. For example:
 
 ```yaml
   - title: "My Other Game"
@@ -103,9 +137,9 @@ Shared-page allocations are represented as separate entries. For example:
       end: 0x08C2
 ```
 
-Omit `addresses` when the allocation reserves complete pages.
+Omit `addresses` when an allocation reserves complete pages.
 
-Use a list when one game has multiple discontiguous ranges:
+Use a list when one game uses multiple discontiguous ranges:
 
 ```yaml
     addresses:
@@ -136,29 +170,26 @@ The important parts of the repository are:
 allocations.yaml              # canonical allocation data
 docs/
   allocations.html            # public web interface
+  savekey.png                  # SaveKey image used in this README
 tools/
   validate.py                 # allocation validator
 .github/workflows/
   validate.yml                # automatic validation for pull requests
 ```
 
-## Imported source
+## Project background
 
-The initial data was imported from:
+The initial data was imported from the [AtariAge SaveKey & AtariVox memory
+allocation list](https://atariage.com/atarivox/atarivox_mem_list.html), which
+states that it was last updated **April 14, 2024**.
 
-https://atariage.com/atarivox/atarivox_mem_list.html
-
-The AtariAge page states that it was last updated **April 14, 2024**.
-
-Contiguous pages belonging to the same assignment have been grouped into a single YAML entry. Two obvious source inconsistencies were normalized during import and are documented in `allocations.yaml`.
-
-## Scratchpad
-
-Pages `0x0C0–0x0FF` (`0x3000–0x3FFF`) are designated as non-permanent scratchpad space in the original allocation list. They are represented explicitly and are therefore not shown as available permanent allocations.
+Contiguous pages belonging to the same assignment have been grouped into a
+single YAML entry. Two obvious source inconsistencies were normalized during
+import and are documented in `allocations.yaml`.
 
 ## See also
 
-- [List of AtariVox Voice Enhanced games](https://forums.atariage.com/topic/304252-list-of-atarivox-enhanced-games/) — community thread tracking games that use the AtariVox speech synthesizer. This is distinct from persistent storage: the AtariVox can save scores and settings like a SaveKey, but it also has a built-in speech synthesizer, and these games use that voice feature.
+- [List of AtariVox Voice Enhanced games](https://forums.atariage.com/topic/304252-list-of-atarivox-enhanced-games/) — community thread tracking games that use the AtariVox speech synthesizer rather than only its SaveKey-compatible storage.
 
 ## Attribution
 
