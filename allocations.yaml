@@ -309,7 +309,9 @@ allocations:
     pages:
       start: 0x01D
       end: 0x01D
-    notes: "Nothing found"  
+    urls:
+      - "https://forums.atariage.com/topic/234209-doctor-who-berzerk-wspeech/"
+    notes: "Never released on cart, WIP last updated 2016, doesn't use SaveKey"
 
   - title: "Scramble"
     developer: "John W. Champeau"
