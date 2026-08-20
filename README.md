@@ -66,6 +66,15 @@ Pages `0x0C0–0x0FF` (`0x3000–0x3FFF`) are designated as non-permanent
 scratchpad space in the original allocation list. They are represented
 explicitly and are therefore not shown as available permanent allocations.
 
+### 7800basic high-score storage
+
+Developers of 7800basic games that use its unified Hi-Score Cart and SaveKey
+driver do not need to reserve a separate page here. When a developer [requests a
+7800 HSC ID for a game](https://forums.atariage.com/topic/128432-high-score-cart-values/),
+7800basic uses that same ID to dynamically identify the game's high-score data.
+On a SaveKey, the driver reads and stores that data within the existing
+**7800basic High Score Storage** allocation.
+
 ## Requesting or changing an allocation
 
 1. Check the [visual allocation map](https://atariage-community.github.io/savekey-allocation-list/allocations.html)
