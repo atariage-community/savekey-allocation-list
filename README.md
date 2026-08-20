@@ -170,7 +170,6 @@ The important parts of the repository are:
 allocations.yaml              # canonical allocation data
 docs/
   allocations.html            # public web interface
-  savekey.png                  # SaveKey image used in this README
 tools/
   validate.py                 # allocation validator
 .github/workflows/
