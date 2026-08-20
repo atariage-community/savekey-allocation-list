@@ -1,6 +1,6 @@
 # SaveKey Allocation List
 
-Community-maintained SaveKey/AtariVox memory allocation registry for Atari 2600 and compatible projects. Use it to reserve persistent-storage pages without colliding with other projects.
+Community-maintained SaveKey/AtariVox memory allocation registry for Atari 2600/7800 projects. Use it to reserve persistent-storage pages without colliding with existing allocations.
 
 > This is a community-maintained project under `atariage-community`. It is not an official AtariAge repository.
 
@@ -12,19 +12,22 @@ For a human-friendly view that reads `allocations.yaml` directly and provides a 
 
 https://atariage-community.github.io/savekey-allocation-list/allocations.html
 
-The registry uses **64-byte pages**. By default, address ranges are derived from the page numbers:
+The registry uses **64-byte pages**, or storage slots. By default, address ranges are derived from the page numbers:
 
 - start address = `page × 64`
 - end address = `start address + 63`
 
 This avoids page/address mismatches.
 
-A developer is normally assigned a complete 64-byte page. Because a game may
-use only part of that page, the assigned developer can document multiple games
-on the same page by declaring each game's exact inclusive
+A developer is normally assigned a complete 64-byte page.
+
+Because a game may use only part of a page, the assigned developer can document
+multiple games on the same page by giving each game its exact inclusive
 `addresses.start` / `addresses.end` range. A game with discontiguous storage can
-declare `addresses` as a list of these ranges. Address ranges must not overlap
-and must fall within, and cover the same page or pages as, the `pages` range.
+list `addresses` as multiple ranges.
+
+Address ranges must not overlap, and must fall within the page or pages named in
+the `pages` range.
 
 ## Adding or changing an allocation
 
@@ -33,11 +36,7 @@ To add or change an allocation:
 1. Fork this repository to your own GitHub account.
 2. Create a branch in your fork.
 3. Edit **only `allocations.yaml`**.
-4. Optionally run the local validator to catch mistakes before pushing:
-   ```sh
-   python -m pip install -r requirements.txt
-   python tools/validate.py allocations.yaml
-   ```
+4. Optionally run the [local validator](#validation) to catch mistakes before pushing.
 5. Commit, push, and open a pull request against this repository's `main` branch.
 
 GitHub Actions validates every pull request. Local validation is optional, but can catch invalid or overlapping ranges before you push.
@@ -74,7 +73,7 @@ Each allocation supports:
 - `developer` — developer, author, team, or publisher credited by the source
 - `platform` — optional; defaults to Atari 2600
 - `kind` — `game`, `system`, `scratchpad`, or `utility`
-- `status` — `reserved` before a qualifying release, `allocated` after released software uses the allotted page, or `abandoned` when an unreleased project is clearly discontinued
+- `status` — allocation state: `reserved`, `allocated`, or `abandoned` (see [Adding or changing an allocation](#adding-or-changing-an-allocation) for definitions)
 - `pages.start` / `pages.end` — inclusive hexadecimal page range
 - `addresses` — optional inclusive hexadecimal byte range, or list of ranges, for a partial-page or discontiguous allocation
 - `urls` — optional list of source URLs that verify the allocation or project status
