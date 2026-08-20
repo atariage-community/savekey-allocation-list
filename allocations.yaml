@@ -277,7 +277,7 @@ allocations:
       - "https://store.atariage.com/products/pintildeata-atari-2600"
     verified: "2026-08-19"  
 
-  - title: "Venture Reloaded"
+  - title: "Venture Reloaded / Circus AtariAge"
     developer: "Jeff Johnson"
     platform: "Atari 2600"
     kind: game
@@ -287,21 +287,9 @@ allocations:
       end: 0x01B
     urls:
      - "https://forums.atariage.com/topic/297609-venture-reloaded/"
+     - "https://forums.atariage.com/topic/207391-circus-atariage-2600"    
     verified: "2026-08-20"
-
-  - title: "Circus AtariAge"
-    developer: "Jeff Johnson"
-    platform: "Atari 2600"
-    kind: game
-    status: reserved
-    pages:
-      start: 0x01B
-      end: 0x01B
-    urls:
-     - "https://forums.atariage.com/topic/207391-circus-atariage-2600"
-    verified: "2026-08-18"
-    notes: "Never released on cart, dormant."
-
+    notes: "Circus AtariAge never released on cart, dormant."
 
   - title: "Wall Jump Ninja"
     developer: "Tim FitzRandolph"
@@ -434,7 +422,7 @@ allocations:
       - "https://champ.games/store/ols/products/cart-super-cobra-arcade"
     verified: "2026-08-17"
 
-  - title: "Space Game"
+  - title: "Space Game / Penult"
     developer: "Karl Garrison (Karl G/kdgarris)"
     platform: "Atari 2600"
     kind: game
@@ -444,18 +432,7 @@ allocations:
       end: 0x026
     urls:
       - "https://store.atariage.com/products/space-game-atari-2600"
-    verified: "2026-08-17"
-
-  - title: "Penult"
-    developer: "Karl Garrison (Karl G/kdgarris)"
-    platform: "Atari 2600"
-    kind: game
-    status: allocated
-    pages:
-      start: 0x026
-      end: 0x026
-    urls:
-      - "https://store.atariage.com/products/penult-atari-2600-pre-order"
+      - "https://store.atariage.com/products/penult-atari-2600-pre-order"      
     verified: "2026-08-20"
 
   - title: "Avalanche"
