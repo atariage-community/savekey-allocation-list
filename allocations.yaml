@@ -281,7 +281,7 @@ allocations:
     developer: "Jeff Johnson"
     platform: "Atari 2600"
     kind: game
-    status: reserved
+    status: allocated
     pages:
       start: 0x01B
       end: 0x01B
