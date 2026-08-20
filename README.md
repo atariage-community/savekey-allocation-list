@@ -150,6 +150,10 @@ Contiguous pages belonging to the same assignment have been grouped into a singl
 
 Pages `0x0C0–0x0FF` (`0x3000–0x3FFF`) are designated as non-permanent scratchpad space in the original allocation list. They are represented explicitly and are therefore not shown as available permanent allocations.
 
+## See also
+
+- [List of AtariVox Voice Enhanced games](https://forums.atariage.com/topic/304252-list-of-atarivox-enhanced-games/) — community thread tracking games that use the AtariVox speech synthesizer. This is distinct from persistent storage: the AtariVox can save scores and settings like a SaveKey, but it also has a built-in speech synthesizer, and these games use that voice feature.
+
 ## Attribution
 
 Thanks to Albert / AtariAge for maintaining the original SaveKey & AtariVox allocation list, and to the Atari homebrew community for coordinating use of persistent storage.
