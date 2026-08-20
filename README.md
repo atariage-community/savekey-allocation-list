@@ -4,6 +4,12 @@ Community-maintained SaveKey/AtariVox memory allocation registry for Atari 2600/
 
 > This is a community-maintained project under `atariage-community`. It is not an official AtariAge repository.
 
+## What is a SaveKey?
+
+The **SaveKey** is a small memory device that plugs into the second controller port of an Atari 2600 or 7800. It provides 32 KB of non-volatile EEPROM storage (512 pages of 64 bytes) that games can use to save high scores, settings, and progress across power cycles. The **AtariVox** is a compatible device that offers the same storage plus a built-in speech synthesizer. This registry coordinates how projects allocate that shared storage.
+
+<img src="docs/savekey.png" alt="A SaveKey memory device that plugs into an Atari controller port" width="320">
+
 ## The canonical file
 
 **[`allocations.yaml`](allocations.yaml) is the single source of truth.**
