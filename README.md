@@ -1,7 +1,7 @@
 # SaveKey Allocation List
 
 The **SaveKey Allocation List** is a community-maintained registry of persistent
-storage allocations for Atari 2600 and 7800 projects. Developers can reserve
+storage allocations for Atari 2600 and 7800 homebrew games. Developers can reserve 
 SaveKey/AtariVox pages without conflicting with existing allocations.
 
 > This is a community-maintained project under `atariage-community`. It is not an official AtariAge repository.
@@ -201,6 +201,6 @@ import and are documented in `allocations.yaml`.
 
 ## Attribution
 
-Thanks to Albert / AtariAge for maintaining the original SaveKey & AtariVox allocation list, and to the Atari homebrew community for coordinating use of persistent storage.
+Thanks to Richard Hutchinson for creating and maintaining the original AtariVox allocation list for a number of years before handing it off to Albert / AtariAge, who maintained it for many years thereafter. Also thanks to the Atari homebrew community for coordinating use of persistent storage.
 
 Special thanks to RevEng for creating the web-based allocation viewer used by this project.
