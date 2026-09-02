@@ -196,17 +196,17 @@ allocations:
       - "https://store.atariage.com/products/worm-atari-7800"
     verified: "2026-08-17"
 
-  - title: "Indenture"
+  - title: "Indenture / Dragon Attack"
     developer: "Will Nicholes"
     platform: "Atari 2600"
     kind: game
-    status: reserved
+    status: abandoned
     pages:
       start: 0x014
       end: 0x015
     urls:
-      - "https://forums.atariage.com/topic/157421-dragon-attack-2600/page/2/#findComment-2346086"
-    notes: "latest update in 2010, seems abandoned"  
+      - "https://forums.atariage.com/topic/157421-dragon-attack-2600/page/2/#findComment-5882956"
+    verified: "2026-08-31"
 
   - title: "AtariVox Spell & Speak"
     developer: "Mike Saarna"
