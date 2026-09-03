@@ -938,6 +938,9 @@ allocations:
     pages:
       start: 0x6C
       end: 0x6C
+    urls:
+      - "https://woodgrain.taswegian.com/index.php?msg=2341"
+    verified: "2026-09-03"
     notes: "WIP binary released 2026/09/02"
 
   - title: "Get Lost"
