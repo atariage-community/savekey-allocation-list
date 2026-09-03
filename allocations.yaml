@@ -930,6 +930,16 @@ allocations:
       start: 0x068
       end: 0x06B
 
+  - title: "Wen Hop?"
+    developer: "Andrew Davie"
+    platform: "Atari 2600"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x6C
+      end: 0x6C
+    notes: "WIP binary released 2026/09/02"
+
   - title: "Get Lost"
     developer: "John K. Harvey"
     platform: "Atari 7800"
