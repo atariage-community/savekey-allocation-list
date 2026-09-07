@@ -1,8 +1,8 @@
 # SaveKey & AtariVox Registry
 
 The **SaveKey & AtariVox Registry** is a community-maintained registry of persistent
-storage allocations for Atari 2600 and 7800 homebrew games. Developers can reserve 
-SaveKey/AtariVox pages without conflicting with existing allocations.
+storage allocations for Atari 2600 and 7800 homebrew games. Developers can reserve
+SaveKey/AtariVox memory slots without conflicting with existing allocations.
 
 > This is a community-maintained project under `atariage-community`. It is not an official AtariAge repository.
 
@@ -30,16 +30,24 @@ projects use that shared address space.
 The visual allocation map reads this file directly and provides a visual view with
 search and filtering.
 
-### Pages and addresses
+### Pages, memory slots, and addresses
 
-The registry uses **64-byte pages**, or storage slots. By default, address
-ranges are derived from the page numbers:
+SaveKey contains **512 pages of 64 bytes each** (32 KB total). A **page** is a
+fixed 64-byte unit of storage. A **memory slot** is space reserved for a developer,
+spanning one or more pages. An **allocation** is a registry record describing how
+that space is used.
+
+A **single-page slot (64 bytes) is usually more than enough for a game**:
+storing a high score often takes only a few bytes. Reserve additional pages only
+when your game's storage needs require them.
+
+By default, address ranges are derived from the page numbers. For each page:
 
 - start address = `page × 64`
 - end address = `start address + 63`
 
-This avoids page/address mismatches. A developer is normally assigned a complete
-page, but multiple games from that developer can share it when each game declares
+This avoids page/address mismatches. A developer normally reserves a slot of one
+complete page, but multiple games from that developer can share it when each game declares
 its exact inclusive `addresses.start` / `addresses.end` range. A game with
 discontiguous storage can list `addresses` as multiple ranges.
 
@@ -51,11 +59,11 @@ every page named in the `pages` range.
 | Status | Use when |
 | --- | --- |
 | `reserved` | A project does not yet have a qualifying cartridge or ROM release. |
-| `allocated` | A cartridge release or released ROM uses the allotted page. |
+| `allocated` | A cartridge release or released ROM uses the allotted memory. |
 | `abandoned` | An unreleased project has clear evidence that its developer abandoned it. |
 
 A released ROM can be played from a multi-ROM cartridge; what matters is that
-the released software uses the allotted page.
+the released software uses the allotted memory.
 
 An abandoned entry continues to protect its pages from reuse until maintainers
 explicitly free or reassign them. To make the pages available again, remove the

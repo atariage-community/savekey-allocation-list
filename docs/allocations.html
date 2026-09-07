@@ -675,6 +675,9 @@
     </section>
 
     <!-- Visual Memory Map -->
+    <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 16px;">
+      SaveKey contains 512 pages of 64 bytes each (32 KB total). Developers reserve memory slots spanning one or more pages; each cell in the map represents one page.
+    </p>
     <section class="visualizer-panel">
       <div class="visualizer-header">
         <div class="visualizer-title">512-Page EEPROM Visual Map ($000 &ndash; $1FF)</div>
@@ -733,9 +736,9 @@
           <option value="unallocated">Unallocated (Free)</option>
         </select>
         <select id="free-toggle" class="select-control" onchange="handleSearchFilterChange()">
-          <option value="show">Show Free Slots</option>
-          <option value="hide">Hide Free Slots</option>
-          <option value="only">Only Free Slots</option>
+          <option value="show">Show Free Page Ranges</option>
+          <option value="hide">Hide Free Page Ranges</option>
+          <option value="only">Only Free Page Ranges</option>
         </select>
       </div>
     </div>
@@ -745,7 +748,7 @@
       <table id="allocations-table">
         <thead>
           <tr>
-            <th>Page (Hex)</th>
+            <th>Page Range (Hex)</th>
             <th>Address Range</th>
             <th>Bytes</th>
             <th>Type</th>
@@ -772,7 +775,10 @@
         <button class="close-btn" onclick="closeReservationModal()">&times;</button>
       </div>
       <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">
-        Fill in your game details to find an available memory slot spanning one or more 64-byte pages and generate the YAML snippet for your reservation pull request. Your reservation takes effect when the pull request is merged.
+        A memory slot spans one or more 64-byte pages. A single-page slot is usually more than enough for a game; storing a high score often takes only a few bytes. Request more pages only if your game needs them.
+      </p>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">
+        Fill in your game details to find an available slot and generate the YAML snippet for your reservation pull request. Your reservation takes effect when the pull request is merged.
       </p>
       
       <div class="form-group">
@@ -796,11 +802,11 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label">Required Pages (64 bytes each)</label>
+          <label class="form-label">Slot Size (number of 64-byte pages)</label>
           <input type="number" id="modal-pages-needed" class="form-input" min="1" max="64" value="1" oninput="updateModalYaml()" />
         </div>
         <div class="form-group">
-          <label class="form-label">Recommended Free Range</label>
+          <label class="form-label">Suggested Slot (page range)</label>
           <input type="text" id="modal-assigned-slot" class="form-input code-cell" readonly />
         </div>
       </div>
