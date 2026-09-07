@@ -1,6 +1,6 @@
-# SaveKey Allocation List
+# SaveKey & AtariVox Registry
 
-The **SaveKey Allocation List** is a community-maintained registry of persistent
+The **SaveKey & AtariVox Registry** is a community-maintained registry of persistent
 storage allocations for Atari 2600 and 7800 homebrew games. Developers can reserve 
 SaveKey/AtariVox pages without conflicting with existing allocations.
 
@@ -9,6 +9,7 @@ SaveKey/AtariVox pages without conflicting with existing allocations.
 ## Quick links
 
 - [Browse the visual allocation map](https://atariage-community.github.io/savekey-allocation-list/allocations.html)
+- [Reserve Memory Slot](https://atariage-community.github.io/savekey-allocation-list/allocations.html?pg=helper)
 - [View the canonical allocation data](allocations.yaml)
 - [Request or change an allocation](#requesting-or-changing-an-allocation)
 
