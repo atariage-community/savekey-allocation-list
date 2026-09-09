@@ -943,6 +943,16 @@ allocations:
     verified: "2026-09-03"
     notes: "WIP binary released 2026/09/02"
 
+  - title: "Morf"
+    developer: "Tim Shepherd / Tikidays Software"
+    platform: "Atari 7800"
+    kind: game
+    status: reserved
+    pages:
+      start: 0x06D
+      end: 0x06D
+    notes: "High score save. Game in development."
+
   - title: "Get Lost"
     developer: "John K. Harvey"
     platform: "Atari 7800"
