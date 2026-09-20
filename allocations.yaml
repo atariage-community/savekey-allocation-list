@@ -526,13 +526,13 @@ allocations:
     developer: "quohog"
     platform: "Atari 2600"
     kind: game
-    status: reserved
+    status: abandoned
     pages:
       start: 0x032
       end: 0x032
     urls:
-     - "https://forums.atariage.com/topic/309971-tap-a-mole-beta-is-it-done/"    
-    verified: "2026-08-18"
+     - "https://forums.atariage.com/topic/309971-tap-a-mole-beta-is-it-done/page/3/#findComment-5892311"    
+    verified: "2026-09-20"
     notes: "Never released on cart, last update 2022. Uses two(!) keyboard controllers, no port for SaveKey free"
 
   - title: "rubyQ"
