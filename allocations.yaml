@@ -663,6 +663,21 @@ allocations:
       end: 0x1031          
     urls:
       - "https://forums.atariage.com/topic/385470-stalax-was-how-to-process-stalactites/"
+    verified: "2026-10-13"        
+    
+  - title: "StalaX"
+    developer: "Thomas Jentzsch"
+    platform: "Atari 2600"
+    kind: game
+    status: allocated
+    pages:
+      start: 0x040
+      end: 0x040
+    addresses:
+      start: 0x101E
+      end: 0x1031          
+    urls:
+      - "https://forums.atariage.com/topic/385470-stalax-was-how-to-process-stalactites/"
     verified: "2026-10-13"    
 
   - title: "Berry Fun!"
